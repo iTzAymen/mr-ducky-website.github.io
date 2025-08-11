@@ -6,4 +6,5 @@ import svgr from "@svgr/rollup";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr()],
+  base: "/mr-ducky-website.github.io/",
 });
