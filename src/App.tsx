@@ -197,7 +197,7 @@ function Projects() {
           />
         </a>
         <h3 className="text-[1.2em] font-bold mt-2">{project?.name}</h3>
-        <p className="text-[0.9em] text-gray-600 mt-1">
+        <p className="text-[0.9em] text-gray-600 mt-1 defaultFont">
           {project?.description}
         </p>
         <p className="text-[0.9em] text-gray-600 mt-auto defaultFont">
