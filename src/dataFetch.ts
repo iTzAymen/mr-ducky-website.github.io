@@ -45,7 +45,6 @@ function fetchGroupData(groupId: string) {
     .then((response) => response.json())
     .then((data) => ({
       memberCount: abbreviateNumber(data.memberCount),
-      created: new Date(data.created).toLocaleDateString(),
     }))
     .catch((error) => {
       console.error("Error fetching group data:", error);

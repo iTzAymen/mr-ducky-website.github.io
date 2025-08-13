@@ -45,10 +45,10 @@ export function Projects() {
       <TiltCard
         rotateMax={2}
         scale={1.05}
-        className="opacity-100 bg-white shadow-lg hover:shadow-2xl hover:z-20 rounded-[20px] p-3 w-[400px] h-[400px] flex flex-col transition-all duration-300 ease-out group"
+        className="opacity-100 bg-white shadow-lg hover:shadow-2xl hover:z-20 rounded-[20px] p-3 w-[400px] h-[400px] flex flex-col transition-all duration-300 ease-out group/card"
       >
         <a
-          className="relative  rounded-lg w-full mx-auto aspect-video group"
+          className="relative  rounded-lg w-full mx-auto aspect-video group/thumbnail"
           href={`https://www.roblox.com/games/${projectData?.placeId}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -56,17 +56,17 @@ export function Projects() {
           <img
             src={projectData?.thumbnail || ""}
             alt="Project Thumbnail"
-            className="rounded-lg group-hover:brightness-75 transition-all"
+            className="rounded-lg group-hover/thumbnail:brightness-75 transition-all"
           />
           <LinkIcon
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-               h-6 w-6 opacity-0 fill-white group-hover:opacity-100 transition-opacity"
+               h-6 w-6 opacity-0 fill-white group-hover/thumbnail:opacity-100 transition-opacity"
           />
         </a>
         <div className="mt-2 flex justify-between items-center">
           <h3 className="text-[1.2em] font-bold">{projectData?.name}</h3>
           <div className="defaultFont flex items-center gap-1.5">
-            <div className="bg-red-600 rounded-full h-1.5 w-1.5 group-hover:animate-ping mb-0.5" />
+            <div className="bg-red-600 rounded-full h-1.5 w-1.5 group-hover/card:animate-ping mb-0.5" />
             {projectData?.playing}
           </div>
         </div>

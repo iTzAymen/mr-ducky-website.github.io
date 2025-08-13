@@ -1,13 +1,18 @@
 [
   {
     "userId": "2201885103",
+    "discordUserId": "243855339504533504",
+    "twitterUsername": "Aym_enou",
+    "youtubeUsername": "iTzAymen",
     "name": "Aymen",
-    "role": "Lead Developer",
+    "role": "Scripter",
     "description": "Passionate about creating immersive gaming experiences.",
     "icon": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3154A853AF695F78DC7F50E57C251FF5-Png/150/150/AvatarHeadshot/Webp/noFilter"
   },
   {
     "userId": "65661447",
+    "discordUserId": "194625080225955840",
+    "twitterUsername": "Mohomesad2",
     "name": "Mohomesad",
     "role": "Builder",
     "description": "Passionate about creating immersive gaming experiences.",
