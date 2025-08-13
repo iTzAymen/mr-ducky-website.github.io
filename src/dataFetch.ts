@@ -1,24 +1,14 @@
 const API_BASE_URL = `roproxy.com/v1/`;
 
-function fetchProjectThumbnail(universeId: string) {
+function fetchProjectThumbnails(universeId: string) {
   return fetch(
-    `https://thumbnails.${API_BASE_URL}games/multiget/thumbnails?universeIds=${universeId}&size=768x432&format=Png&isCircular=false`
+    `https://thumbnails.${API_BASE_URL}games/multiget/thumbnails?countPerUniverse=999&format=Png&isCircular=false&size=768x432&universeIds=${universeId}`
   )
     .then((response) => response.json())
-    .then((data) => data.data[0]?.thumbnails[0]?.imageUrl);
-}
-
-function abbreviateNumber(num: number): string {
-  if (num >= 1_000_000_000) {
-    return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B+";
-  }
-  if (num >= 1_000_000) {
-    return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M+";
-  }
-  if (num >= 1_000) {
-    return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K+";
-  }
-  return num.toString();
+    .then(
+      (data) =>
+        data.data[0]?.thumbnails.map((thumb: any) => thumb.imageUrl) || []
+    );
 }
 
 function fetchProjectData(universeId: string) {
@@ -28,9 +18,9 @@ function fetchProjectData(universeId: string) {
       const game = data.data[0];
       return {
         placeId: game.rootPlaceId,
-        playing: abbreviateNumber(game.playing),
-        visits: abbreviateNumber(game.visits),
-        favorites: abbreviateNumber(game.favoritedCount),
+        playing: game.playing,
+        visits: game.visits,
+        favorites: game.favoritedCount,
         created: new Date(game.created).toLocaleDateString(),
       };
     })
@@ -44,7 +34,7 @@ function fetchGroupData(groupId: string) {
   return fetch(`https://groups.${API_BASE_URL}/groups/${groupId}`)
     .then((response) => response.json())
     .then((data) => ({
-      memberCount: abbreviateNumber(data.memberCount),
+      memberCount: data.memberCount,
     }))
     .catch((error) => {
       console.error("Error fetching group data:", error);
@@ -52,4 +42,4 @@ function fetchGroupData(groupId: string) {
     });
 }
 
-export { fetchProjectThumbnail, fetchProjectData, fetchGroupData };
+export { fetchProjectThumbnails, fetchProjectData, fetchGroupData };

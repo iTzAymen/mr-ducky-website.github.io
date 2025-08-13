@@ -5,6 +5,8 @@ interface TiltCardProps {
   className?: string;
   rotateMax?: number; // Max rotation in degrees
   scale?: number; // Scale on hover
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export function TiltCard({
@@ -12,6 +14,8 @@ export function TiltCard({
   className = "",
   rotateMax = 5,
   scale = 1.05,
+  onMouseEnter,
+  onMouseLeave,
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +42,7 @@ export function TiltCard({
   }
 
   function handleMouseLeave() {
+    if (onMouseLeave) onMouseLeave();
     const card = cardRef.current;
     if (!card) return;
     card.style.transform = `
@@ -53,6 +58,7 @@ export function TiltCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMouseEnter}
       className={`transition-transform duration-300 ease-out${className}`}
     >
       {children}
