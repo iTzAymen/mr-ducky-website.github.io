@@ -21,6 +21,10 @@ export function Projects() {
 
     // fetch project data from Roblox API
     useEffect(() => {
+      if (project?.noFetch) {
+        return;
+      }
+
       fetchProjectThumbnail(universeId).then((imageUrl) => {
         setProjectData((prev) => ({
           ...prev,

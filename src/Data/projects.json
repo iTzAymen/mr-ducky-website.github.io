@@ -42,12 +42,13 @@
   {
     "universeId": "7849325235",
     "placeId": "101586178170334",
-    "name": "Truth's Table",
+    "name": "Truths Table",
     "description": "Welcome to Truth's Table (formerly Liar's Game) by Altera, a strategic party game where you outwit friends or AI in a battle of truth, lies, and deduction!",
     "created": "10/22/2024",
     "visits": "649.4K+",
     "favorites": "9.4K+",
-    "thumbnail": "https://tr.rbxcdn.com/180DAY-15c6802994998129f485ca5c7d46269f/768/432/Image/Webp/noFilter"
+    "thumbnail": "https://tr.rbxcdn.com/180DAY-15c6802994998129f485ca5c7d46269f/768/432/Image/Webp/noFilter",
+    "noFetch": true
   },
   {
     "universeId": "2259718845",
