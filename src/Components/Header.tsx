@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import duckyLogo from "../assets/ducky-masked.png";
+import duckyLogo from "../assets/mr-ducky-logo-primary.png";
 
 export function Header() {
   const [scrollY, setScrollY] = useState(0);
@@ -35,14 +35,14 @@ export function Header() {
           src={duckyLogo}
           alt="ducky logo"
           style={{
-            height: `${200 * scale}px`,
+            height: `${400 * scale}px`,
             marginTop: `${0 * scale ** 2}px`, // change 0 to your top margin value if needed
             marginBottom: `${15 * scale ** 2}px`,
             transition: `height ${transition}, margin ${transition}`,
           }}
           className="rounded-[7px] mx-auto"
         />
-        <h1
+        {/* <h1
           className="mx-auto w-full text-center text-white boldFont"
           style={{
             fontSize: `${48 * scale}px`,
@@ -51,7 +51,7 @@ export function Header() {
           }}
         >
           Mr.Ducky Studio
-        </h1>
+        </h1> */}
         <p
           className="text-white w-full text-center opacity-90"
           style={{
