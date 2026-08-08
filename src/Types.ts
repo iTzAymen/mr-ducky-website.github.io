@@ -9,4 +9,5 @@ export interface ProjectData {
   thumbnails: string[];
   playing: number;
   noFetch: boolean;
+  isNew?: boolean; // Optional property to indicate if the project is new
 }

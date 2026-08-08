@@ -24,7 +24,7 @@ function ThumbnailCarousel({
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) =>
-        prev === thumbnails.length - 1 ? 0 : prev + 1
+        prev === thumbnails.length - 1 ? 0 : prev + 1,
       );
     }, 3000); // 4 seconds
 
@@ -68,6 +68,7 @@ function ThumbnailCarousel({
 
 function ProjectCard({ projectData }: { projectData: ProjectData }) {
   const [isHovered, setIsHovered] = useState(false);
+  const isNew = Boolean(projectData?.isNew);
 
   return (
     <TiltCard
@@ -78,7 +79,7 @@ function ProjectCard({ projectData }: { projectData: ProjectData }) {
       className="opacity-100 bg-white shadow-lg hover:shadow-2xl hover:z-20 rounded-[20px] p-3 w-[400px] h-[400px] flex flex-col transition-all duration-300 ease-out group/card"
     >
       <a
-        className="relative  rounded-lg w-full mx-auto aspect-video group/thumbnail"
+        className="relative rounded-lg w-full mx-auto aspect-video group/thumbnail"
         href={`https://www.roblox.com/games/${projectData?.placeId}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -87,7 +88,17 @@ function ProjectCard({ projectData }: { projectData: ProjectData }) {
           isHovered={isHovered}
           thumbnails={projectData?.thumbnails || []}
         />
+
+        {isNew && (
+          <span
+            aria-label="New project"
+            className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded-full text-xs font-bold shadow"
+          >
+            NEW
+          </span>
+        )}
       </a>
+
       <div className="mt-2 flex justify-between items-center">
         <h3 className="text-[1.2em] font-bold">{projectData?.name}</h3>
         <div className="defaultFont flex items-center gap-1.5">

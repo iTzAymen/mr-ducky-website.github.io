@@ -25,7 +25,8 @@ function App() {
 
       playing: 0,
       noFetch: project?.noFetch || false,
-    }))
+      isNew: project?.isNew || false, // Set isNew based on the project data
+    })),
   );
 
   // fetch project data from Roblox API
@@ -42,8 +43,8 @@ function App() {
           prev.map((proj) =>
             proj.universeId === universeId
               ? { ...proj, thumbnails: thumbnails || proj.thumbnails }
-              : proj
-          )
+              : proj,
+          ),
         );
       });
 
@@ -51,8 +52,8 @@ function App() {
         if (!data) return;
         setProjectsData((prev) =>
           prev.map((proj) =>
-            proj.universeId === universeId ? { ...proj, ...data } : proj
-          )
+            proj.universeId === universeId ? { ...proj, ...data } : proj,
+          ),
         );
       });
     }
