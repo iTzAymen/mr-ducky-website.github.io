@@ -1,32 +1,95 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap");
 @import "tailwindcss";
 @import "./fonts/Nexa/stylesheet.css";
 @tailwind utilities;
-
-body {
-  margin: 0;
-  font-family: "Nexa", "Nunito", sans-serif;
-  font-weight: 400;
-  background-color: #f0f9ff;
-  color: #333;
-}
-
-.defaultFont {
-  font-family: "Nunito", sans-serif;
-  font-weight: 400;
-}
-
-.boldFont {
-  font-family: "Nexa", "Nunito", cursive;
-  font-weight: 900;
-}
 
 @layer base {
   html {
     @apply scroll-smooth;
   }
+
+  body {
+    margin: 0;
+    font-family: "Nexa", "Nunito", sans-serif;
+    font-weight: 400;
+    background-color: #eaf6ff;
+    color: #0b1d3f;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: #0a66e0;
+  }
+
+  section {
+    scroll-margin-top: 96px;
+  }
+
+  .defaultFont {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+  }
+
+  .boldFont {
+    font-family: "Nexa", "Nunito", cursive;
+    font-weight: 900;
+  }
+
+  .boldFont800 {
+    font-family: "Nexa", "Nunito", cursive;
+    font-weight: 800;
+  }
 }
 
-section {
-  scroll-margin-top: 64px;
+@keyframes duckyBlob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.15);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes duckyMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes duckyPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 45, 85, 0.75);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 45, 85, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 45, 85, 0);
+  }
+}
+
+@keyframes duckyBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+}
+
+@keyframes duckyBob2 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(8deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
 }
