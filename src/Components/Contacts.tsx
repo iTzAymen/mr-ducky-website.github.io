@@ -1,6 +1,7 @@
 import { TiltCard } from "./TiltCard";
 import { useReveal } from "../hooks/useReveal";
 import { abbreviateNumber } from "../utils";
+import { STUDIO } from "../config/studio";
 import contacts from "../Data/contacts.json";
 
 import { ReactComponent as DiscordIcon } from "../assets/discord.svg";
@@ -62,7 +63,8 @@ export function Contacts({ groupMembers }: { groupMembers: number }) {
                 Discord
               </div>
               <div className="defaultFont text-[15px] font-bold text-white/90">
-                5K members · daily chat
+                {abbreviateNumber(STUDIO.discordMembers, true)} members · daily
+                chat
               </div>
             </div>
             <div className="boldFont relative mt-auto w-fit self-start rounded-full border-[3px] border-[#0B1D3F] bg-[#0B1D3F]/85 px-4 py-2.5 text-sm">

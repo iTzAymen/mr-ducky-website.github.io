@@ -44,6 +44,31 @@
     scroll-margin-top: 96px;
   }
 
+  /* Keyboard focus ring — the custom button/link styles otherwise leave
+     keyboard users with no visible focus indicator. Only shows for
+     keyboard navigation, not mouse clicks. */
+  :focus-visible {
+    outline: 3px solid #009dff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .dark :focus-visible {
+    outline-color: #ffff0d;
+  }
+
+  /* Respect users who ask for less motion: kill the ambient loops. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   .defaultFont {
     font-family: "Nunito", sans-serif;
     font-weight: 400;

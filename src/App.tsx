@@ -6,6 +6,7 @@ import { Ticker } from "./Components/Ticker";
 import { About } from "./Components/About";
 import { Team } from "./Components/Team";
 import { Contacts } from "./Components/Contacts";
+import { StructuredData } from "./Components/StructuredData";
 
 import projects from "./Data/projects.json";
 import { useState, useEffect } from "react";
@@ -15,11 +16,9 @@ import {
   fetchGroupData,
 } from "./dataFetch";
 import { useTheme } from "./hooks/useTheme";
+import { STUDIO } from "./config/studio";
 
 import type { ProjectData } from "./Types";
-
-const GROUP_ID = "8954519";
-const GROUP_MEMBERS_FALLBACK = 656_900;
 
 function App() {
   const [projectsData, setProjectsData] = useState<ProjectData[]>(
@@ -43,47 +42,62 @@ function App() {
       collab: project?.collab || false,
     })),
   );
-  const [groupMembers, setGroupMembers] = useState(GROUP_MEMBERS_FALLBACK);
+  const [groupMembers, setGroupMembers] = useState<number>(
+    STUDIO.robloxGroupMembersFallback,
+  );
+  const [statsLoading, setStatsLoading] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
   // fetch project data from Roblox API
   useEffect(() => {
+    const pending: Promise<unknown>[] = [];
+
     for (const project of projectsData) {
       const universeId = project.universeId;
       if (project?.noFetch) {
         continue;
       }
 
-      fetchProjectThumbnails(universeId).then((thumbnails) => {
-        setProjectsData((prev) =>
-          prev.map((proj) =>
-            proj.universeId === universeId
-              ? { ...proj, thumbnails: thumbnails || proj.thumbnails }
-              : proj,
-          ),
-        );
-      });
+      pending.push(
+        fetchProjectThumbnails(universeId).then((thumbnails) => {
+          setProjectsData((prev) =>
+            prev.map((proj) =>
+              proj.universeId === universeId
+                ? { ...proj, thumbnails: thumbnails.length ? thumbnails : proj.thumbnails }
+                : proj,
+            ),
+          );
+        }),
+      );
 
-      fetchProjectData(universeId).then((data) => {
-        if (!data) return;
-        setProjectsData((prev) =>
-          prev.map((proj) =>
-            proj.universeId === universeId ? { ...proj, ...data } : proj,
-          ),
-        );
-      });
+      pending.push(
+        fetchProjectData(universeId).then((data) => {
+          if (!data) return;
+          setProjectsData((prev) =>
+            prev.map((proj) =>
+              proj.universeId === universeId ? { ...proj, ...data } : proj,
+            ),
+          );
+        }),
+      );
     }
 
-    fetchGroupData(GROUP_ID).then((data) => {
-      if (!data) return;
-      setGroupMembers(data.memberCount);
-    });
+    pending.push(
+      fetchGroupData(STUDIO.robloxGroupId).then((data) => {
+        if (!data) return;
+        setGroupMembers(data.memberCount);
+      }),
+    );
+
+    Promise.allSettled(pending).then(() => setStatsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const featured = projectsData.find((p) => p.featured);
   const gridGames = projectsData.filter((p) => !p.featured && !p.archived);
   const archiveGames = projectsData.filter((p) => p.archived);
+
+  const gamesShipped = projectsData.length;
 
   const totalVisits = projectsData.reduce((acc, p) => acc + p.visits, 0);
   const totalFavourites = projectsData.reduce(
@@ -98,16 +112,27 @@ function App() {
 
   return (
     <div className="relative overflow-x-clip bg-[var(--bg-page)]">
+      <StructuredData projects={projectsData} />
       <NavBar playHref={playHref} theme={theme} toggleTheme={toggleTheme} />
-      <Header totalPlaying={totalPlaying} playHref={playHref} />
+      <Header
+        totalPlaying={totalPlaying}
+        playHref={playHref}
+        gamesShipped={gamesShipped}
+        statsLoading={statsLoading}
+      />
       <Ticker
         totalVisits={totalVisits}
         groupMembers={groupMembers}
         totalFavourites={totalFavourites}
       />
-      <About projectsData={projectsData} groupMembers={groupMembers} />
+      <About
+        projectsData={projectsData}
+        groupMembers={groupMembers}
+        gamesShipped={gamesShipped}
+        statsLoading={statsLoading}
+      />
       <Projects featured={featured} games={gridGames} archive={archiveGames} />
-      <Team />
+      <Team gamesShipped={gamesShipped} />
       <Contacts groupMembers={groupMembers} />
       <Footer />
     </div>

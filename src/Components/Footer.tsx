@@ -1,5 +1,6 @@
 import appIcon from "../assets/mr-ducky-app-icon-rounded.png";
 import contacts from "../Data/contacts.json";
+import { STUDIO } from "../config/studio";
 
 const LINKS = [
   { label: "Discord", href: contacts.Discord, variant: "solid" as const },
@@ -34,7 +35,8 @@ export function Footer() {
               Mr.Ducky Studio
             </div>
             <div className="defaultFont text-sm text-white/60">
-              © 2025 · Making Roblox games since 2021
+              © {new Date().getFullYear()} · Making Roblox games since{" "}
+              {STUDIO.foundedYear}
             </div>
           </div>
         </div>

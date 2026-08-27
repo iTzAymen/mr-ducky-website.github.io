@@ -2,13 +2,18 @@ import duckyLogo from "../assets/mr-ducky-logo-primary.png";
 import { abbreviateNumber } from "../utils";
 import { useConfetti } from "../hooks/useConfetti";
 import { useParallax } from "../hooks/useParallax";
+import { STUDIO } from "../config/studio";
 
 export function Header({
   totalPlaying,
   playHref,
+  gamesShipped,
+  statsLoading,
 }: {
   totalPlaying: number;
   playHref: string;
+  gamesShipped: number;
+  statsLoading: boolean;
 }) {
   const onConfetti = useConfetti();
   const parallaxRef = useParallax<HTMLDivElement>(5);
@@ -51,10 +56,10 @@ export function Header({
             className="block w-[clamp(280px,34vw,480px)] object-contain drop-shadow-[0_18px_0_rgba(11,29,63,0.1)]"
           />
           <div className="boldFont absolute -top-1.5 -right-4 rounded-2xl border-4 border-[#0B1D3F] bg-[#FFFF0D] px-[14px] py-[9px] text-[13px] tracking-[.4px] shadow-[0_5px_0_#0B1D3F] motion-safe:animate-[duckyBob_6s_ease-in-out_infinite]">
-            SINCE 2021
+            SINCE {STUDIO.foundedYear}
           </div>
           <div className="boldFont absolute top-[30px] -left-2 rounded-2xl border-4 border-[#0B1D3F] bg-white px-[14px] py-[9px] text-[13px] shadow-[0_5px_0_#0B1D3F] motion-safe:animate-[duckyBob2_7.5s_ease-in-out_infinite]">
-            8 GAMES SHIPPED
+            {gamesShipped} GAMES SHIPPED
           </div>
         </div>
 
@@ -62,7 +67,12 @@ export function Header({
           <div className="mb-5 inline-flex items-center gap-[9px] rounded-full border-[3px] border-[#0B1D3F] bg-[#0B1D3F]/90 py-[7px] pr-[15px] pl-3">
             <span className="h-[9px] w-[9px] rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
             <span className="boldFont text-[13px] tracking-[.3px] text-white">
-              {abbreviateNumber(totalPlaying, true)} PLAYING RIGHT NOW
+              {statsLoading ? (
+                <span className="inline-block h-[13px] w-[46px] translate-y-[2px] animate-pulse rounded bg-white/40 align-middle" />
+              ) : (
+                abbreviateNumber(totalPlaying, true)
+              )}{" "}
+              PLAYING RIGHT NOW
             </span>
           </div>
           <h1
@@ -73,7 +83,7 @@ export function Header({
           </h1>
           <p className="mb-7 max-w-[460px] text-lg leading-normal text-pretty text-white/[.94]">
             We build unique, high-quality Roblox experiences that bring players
-            together. Eight games, one duck in a fedora.
+            together. {gamesShipped} games, one duck in a fedora.
           </p>
           <div className="flex flex-wrap gap-3.5">
             <a

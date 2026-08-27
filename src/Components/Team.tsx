@@ -110,7 +110,7 @@ function DevCard({
   );
 }
 
-export function Team() {
+export function Team({ gamesShipped }: { gamesShipped: number }) {
   const heading = useReveal<HTMLDivElement>(0);
 
   return (
@@ -125,7 +125,7 @@ export function Team() {
             The ducks behind it
           </h2>
           <p className="m-0 mb-2 text-base text-[var(--ink)]/[62%]">
-            Two people, eight games.
+            {devs.length} people, {gamesShipped} games.
           </p>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-[26px]">

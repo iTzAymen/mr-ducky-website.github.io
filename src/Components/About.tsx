@@ -44,6 +44,7 @@ function IconTile({
 function StatCard({
   index,
   trigger,
+  loading,
   bg,
   shadowColor = "#0B1D3F",
   label,
@@ -57,6 +58,7 @@ function StatCard({
 }: {
   index: number;
   trigger: boolean;
+  loading: boolean;
   bg: string;
   shadowColor?: string;
   label: string;
@@ -69,7 +71,7 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   const { ref, style } = useReveal<HTMLDivElement>(index);
-  const displayed = useCountUp(value, trigger);
+  const displayed = useCountUp(value, trigger && !loading);
 
   return (
     <TiltCard
@@ -91,7 +93,14 @@ function StatCard({
         className="boldFont text-[52px] leading-[1]"
         style={{ color: valueColor, textShadow }}
       >
-        {abbreviateNumber(displayed, true)}
+        {loading ? (
+          <span
+            className="inline-block h-[44px] w-[140px] animate-pulse rounded-lg"
+            style={{ backgroundColor: "currentColor", opacity: 0.25 }}
+          />
+        ) : (
+          abbreviateNumber(displayed, true)
+        )}
       </div>
       <div className="defaultFont mt-2.5 text-[14px]" style={{ color: subColor }}>
         {subLine}
@@ -103,9 +112,13 @@ function StatCard({
 export function About({
   projectsData,
   groupMembers,
+  gamesShipped,
+  statsLoading,
 }: {
   projectsData: ProjectData[];
   groupMembers: number;
+  gamesShipped: number;
+  statsLoading: boolean;
 }) {
   const heading = useReveal<HTMLDivElement>(0);
   const panel = useReveal<HTMLDivElement>(0);
@@ -127,7 +140,7 @@ export function About({
             The numbers
           </h2>
           <p className="m-0 mb-2 max-w-[420px] text-base text-[var(--ink)]/[62%]">
-            Pulled live from the Roblox API every time this page loads.
+            Pulled straight from the Roblox API, refreshed every few minutes.
           </p>
         </div>
 
@@ -138,19 +151,21 @@ export function About({
           <StatCard
             index={0}
             trigger={gridTrigger.visible}
+            loading={statsLoading}
             bg="bg-[#009DFF]"
             label="Total visits"
             labelColor="#fff"
             value={totalVisits}
             valueColor="#fff"
             textShadow="0 4px 0 rgba(11,29,63,.45)"
-            subLine="across all eight experiences"
+            subLine={`across all ${gamesShipped} experiences`}
             subColor="rgba(255,255,255,.85)"
             icon={<HomeIcon />}
           />
           <StatCard
             index={1}
             trigger={gridTrigger.visible}
+            loading={statsLoading}
             bg="bg-[#FFFF0D]"
             label="Group members"
             labelColor="#0B1D3F"
@@ -163,6 +178,7 @@ export function About({
           <StatCard
             index={2}
             trigger={gridTrigger.visible}
+            loading={statsLoading}
             bg="bg-[#FF7A18]"
             label="Total favourites"
             labelColor="#fff"
@@ -176,6 +192,7 @@ export function About({
           <StatCard
             index={3}
             trigger={gridTrigger.visible}
+            loading={statsLoading}
             bg="bg-[#0B1D3F]"
             shadowColor="#0A66E0"
             label="Playing now"

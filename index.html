@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/mr-ducky-app-icon.png" />
+    <link rel="apple-touch-icon" href="/mr-ducky-app-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       (function () {
@@ -16,37 +17,90 @@
         } catch (e) {}
       })();
     </script>
-    <title>Mr.Ducky Studio</title>
+    <title>Mr.Ducky Studio — Roblox Game Development</title>
     <meta
       name="description"
-      content="We build unique, high-quality Roblox experiences that bring players together. Eight games, one duck in a fedora."
+      content="Mr.Ducky Studio builds unique, high-quality Roblox experiences that bring players together — from The Squid Game to Chained Up. Shipping since 2021."
     />
+    <meta
+      name="keywords"
+      content="Mr.Ducky Studio, Roblox game development, Roblox studio, The Squid Game Roblox, Chained Up Roblox, Roblox developers"
+    />
+    <meta name="author" content="Mr.Ducky Studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mrduckystudio.com/" />
 
     <!-- Open Graph / Discord embed -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mr.Ducky Studio" />
     <meta property="og:url" content="https://mrduckystudio.com/" />
-    <meta property="og:title" content="Mr.Ducky Studio" />
+    <meta property="og:title" content="Mr.Ducky Studio — Roblox Game Development" />
     <meta
       property="og:description"
-      content="Fun, Creative, and Playful Roblox Game Development! We build unique, high-quality Roblox experiences that bring players together."
+      content="Fun, creative, and playful Roblox game development. We build unique, high-quality experiences that bring players together."
     />
     <meta
       property="og:image"
-      content="https://mrduckystudio.com/mr-ducky-app-icon.png"
+      content="https://mrduckystudio.com/og-image.png"
     />
-    <meta name="theme-color" content="#0A66E0" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mr.Ducky Studio — fun, creative, and playful Roblox game development"
+    />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mr.Ducky Studio" />
+    <meta name="twitter:title" content="Mr.Ducky Studio — Roblox Game Development" />
     <meta
       name="twitter:description"
-      content="Fun, Creative, and Playful Roblox Game Development! We build unique, high-quality Roblox experiences that bring players together."
+      content="Fun, creative, and playful Roblox game development. We build unique, high-quality experiences that bring players together."
     />
     <meta
       name="twitter:image"
-      content="https://mrduckystudio.com/mr-ducky-app-icon.png"
+      content="https://mrduckystudio.com/og-image.png"
     />
+
+    <meta
+      name="theme-color"
+      content="#0A66E0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#050b18"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <!-- schema.org: static core graph for crawlers that don't run JS.
+         The live game catalog is added at runtime by <StructuredData />. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://mrduckystudio.com/#organization",
+        "name": "Mr.Ducky Studio",
+        "url": "https://mrduckystudio.com/",
+        "logo": "https://mrduckystudio.com/mr-ducky-app-icon.png",
+        "foundingDate": "2021",
+        "description": "A Roblox game development studio building unique, high-quality multiplayer experiences.",
+        "sameAs": [
+          "https://discord.gg/mrduckystudio",
+          "https://www.roblox.com/communities/8954519/Mr-Ducky-Studio",
+          "https://www.tiktok.com/@mr.ducky.studio"
+        ]
+      }
+    </script>
+
+    <!-- Privacy-friendly analytics (GoatCounter).
+         Register a code at https://www.goatcounter.com/ and replace
+         "mrduckystudio" below with your subdomain if it differs. -->
+    <script
+      data-goatcounter="https://mrduckystudio.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
   </head>
   <body>
     <div id="root"></div>

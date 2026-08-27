@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { abbreviateNumber } from "../utils";
+import { STUDIO } from "../config/studio";
 
 const SPARKLE_COLORS = ["#FF7A18", "#00C6FF", "#FF7A18", "#00C6FF", "#FF7A18"];
 
@@ -15,10 +16,10 @@ function TickerContent({
   const items = [
     `${abbreviateNumber(totalVisits, true)} VISITS`,
     `${abbreviateNumber(groupMembers, true)} GROUP MEMBERS`,
-    "5K DISCORD MEMBERS",
+    `${abbreviateNumber(STUDIO.discordMembers, true)} DISCORD MEMBERS`,
     `${abbreviateNumber(totalFavourites, true)} FAVOURITES`,
-    "SHIPPING SINCE 2021",
-    "13K PEAK CCU",
+    `SHIPPING SINCE ${STUDIO.foundedYear}`,
+    `${abbreviateNumber(STUDIO.peakCcu, true)} PEAK CCU`,
   ];
 
   return (
