@@ -16,19 +16,20 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
       ref={ref}
       style={style}
       rotateMax={1.6}
-      className="relative mb-11 flex flex-wrap gap-[26px] rounded-[32px] border-[5px] border-[#0B1D3F] bg-white p-[18px] shadow-[0_10px_0_#0B1D3F]"
+      className="relative mb-11 flex flex-wrap gap-[26px] rounded-[32px] border-[5px] border-[var(--outline)] bg-[var(--surface)] p-[18px] shadow-[0_10px_0_var(--outline)]"
     >
       <a
         href={playHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative block aspect-video min-w-[320px] flex-1 basis-[520px] overflow-hidden rounded-[22px] border-4 border-[#0B1D3F]"
+        className="group relative block aspect-video min-w-[240px] flex-1 basis-[520px] overflow-hidden rounded-[22px] border-4 border-[var(--outline)] sm:min-w-[320px]"
       >
         <GameThumbnail
           thumbnails={project.thumbnails}
           alt={project.name}
           className="h-full w-full"
           hoverScaleClassName="group-hover:scale-[1.06]"
+          videoUrl={project.videos?.[0]}
         />
         {project.isNew && (
           <span className="boldFont absolute top-[14px] left-[14px] rounded-full border-[3px] border-[#0B1D3F] bg-[#FF2D55] px-3.5 py-2 text-[13px] tracking-[.6px] text-white shadow-[0_4px_0_#0B1D3F] motion-safe:animate-[duckyBob2_6s_ease-in-out_infinite]">
@@ -37,20 +38,20 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
         )}
       </a>
 
-      <div className="flex min-w-[290px] flex-1 basis-[320px] flex-col py-2.5 pr-3.5 pl-1">
+      <div className="flex min-w-[240px] flex-1 basis-[320px] flex-col py-2.5 pr-3.5 pl-1 sm:min-w-[290px]">
         <div className="mb-3 flex items-center gap-2.5">
           <span className="boldFont rounded-full border-[3px] border-[#0A66E0] bg-[#EAF6FF] px-3 py-1.5 text-xs tracking-[.7px] text-[#0A66E0]">
             FEATURED
           </span>
-          <span className="boldFont inline-flex items-center gap-[7px] text-[13px] text-[#0B1D3F]">
+          <span className="boldFont inline-flex items-center gap-[7px] text-[13px] text-[var(--ink)]">
             <span className="h-2 w-2 rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
             {abbreviateNumber(project.playing, true)} playing
           </span>
         </div>
-        <h3 className="boldFont m-0 mb-3.5 text-[clamp(28px,3vw,40px)] leading-[1] tracking-[-1px] text-[#0B1D3F]">
+        <h3 className="boldFont m-0 mb-3.5 text-[clamp(28px,3vw,40px)] leading-[1] tracking-[-1px] text-[var(--ink)]">
           {project.name}
         </h3>
-        <p className="defaultFont m-0 mb-5 text-base leading-[1.55] text-pretty text-[#0B1D3F]/[72%]">
+        <p className="defaultFont m-0 mb-5 text-base leading-[1.55] text-pretty text-[var(--ink)]/[72%]">
           {project.description}
         </p>
         <div className="mb-[22px] flex flex-wrap gap-2.5">

@@ -7,6 +7,7 @@ export interface ProjectData {
   visits: number;
   favorites: number;
   thumbnails: string[];
+  videos?: string[]; // Optional YouTube links, played on thumbnail hover
   playing: number;
   noFetch: boolean;
   isNew?: boolean; // Optional property to indicate if the project is new

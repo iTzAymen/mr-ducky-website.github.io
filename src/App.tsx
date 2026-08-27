@@ -14,6 +14,7 @@ import {
   fetchProjectData,
   fetchGroupData,
 } from "./dataFetch";
+import { useTheme } from "./hooks/useTheme";
 
 import type { ProjectData } from "./Types";
 
@@ -31,6 +32,7 @@ function App() {
       visits: project?.visits || 0,
       favorites: project?.favorites || 0,
       thumbnails: project?.thumbnails || [],
+      videos: project?.videos || [],
 
       playing: 0,
       noFetch: project?.noFetch || false,
@@ -42,6 +44,7 @@ function App() {
     })),
   );
   const [groupMembers, setGroupMembers] = useState(GROUP_MEMBERS_FALLBACK);
+  const { theme, toggleTheme } = useTheme();
 
   // fetch project data from Roblox API
   useEffect(() => {
@@ -94,8 +97,8 @@ function App() {
     : "#games";
 
   return (
-    <div className="relative overflow-x-clip bg-[#EAF6FF]">
-      <NavBar playHref={playHref} />
+    <div className="relative overflow-x-clip bg-[var(--bg-page)]">
+      <NavBar playHref={playHref} theme={theme} toggleTheme={toggleTheme} />
       <Header totalPlaying={totalPlaying} playHref={playHref} />
       <Ticker
         totalVisits={totalVisits}

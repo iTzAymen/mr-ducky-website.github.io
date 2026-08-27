@@ -123,17 +123,17 @@ export function About({
           style={heading.style}
           className="mb-[34px] flex flex-wrap items-end gap-4"
         >
-          <h2 className="boldFont m-0 text-[clamp(32px,3.6vw,48px)] tracking-[-1.2px] text-[#0B1D3F]">
+          <h2 className="boldFont m-0 text-[clamp(32px,3.6vw,48px)] tracking-[-1.2px] text-[var(--ink)]">
             The numbers
           </h2>
-          <p className="m-0 mb-2 max-w-[420px] text-base text-[#0B1D3F]/[62%]">
+          <p className="m-0 mb-2 max-w-[420px] text-base text-[var(--ink)]/[62%]">
             Pulled live from the Roblox API every time this page loads.
           </p>
         </div>
 
         <div
           ref={gridTrigger.ref}
-          className="grid grid-cols-[repeat(auto-fit,minmax(248px,1fr))] gap-[22px]"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(248px,100%),1fr))] gap-[22px]"
         >
           <StatCard
             index={0}
@@ -195,16 +195,16 @@ export function About({
         <div
           ref={panel.ref}
           style={panel.style}
-          className="mt-[34px] flex flex-wrap items-center gap-8 rounded-[26px] border-4 border-[#0B1D3F] bg-white px-[34px] py-8 shadow-[0_8px_0_#0B1D3F]"
+          className="mt-[34px] flex flex-wrap items-center gap-8 rounded-[26px] border-4 border-[var(--outline)] bg-[var(--surface)] px-[34px] py-8 shadow-[0_8px_0_var(--outline)]"
         >
-          <p className="m-0 flex-1 basis-[420px] text-lg leading-[1.6] text-pretty text-[#0B1D3F]">
+          <p className="m-0 flex-1 basis-[420px] text-lg leading-[1.6] text-pretty text-[var(--ink)]">
             We are <strong>Mr.Ducky Studio</strong>, a vibrant Roblox game
             development group dedicated to crafting unique, high-quality
             experiences. Founded with a passion for creativity and fun, we aim
             to create well-designed, engaging adventures that bring players
             together for unforgettable adventures.
           </p>
-          <div className="flex flex-none flex-wrap gap-2.5">
+          <div className="flex w-full flex-wrap gap-2.5 sm:w-auto sm:flex-none">
             {CHIPS.map((chip) => (
               <span
                 key={chip}

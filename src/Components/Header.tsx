@@ -43,12 +43,12 @@ export function Header({
         aria-hidden
       />
 
-      <div className="relative mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-20">
+      <div className="relative mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-20">
         <div ref={parallaxRef} className="relative flex-none">
           <img
             src={duckyLogo}
             alt="Mr.Ducky Studio logo"
-            className="block w-[clamp(220px,34vw,480px)] object-contain drop-shadow-[0_18px_0_rgba(11,29,63,0.1)]"
+            className="block w-[clamp(280px,34vw,480px)] object-contain drop-shadow-[0_18px_0_rgba(11,29,63,0.1)]"
           />
           <div className="boldFont absolute -top-1.5 -right-4 rounded-2xl border-4 border-[#0B1D3F] bg-[#FFFF0D] px-[14px] py-[9px] text-[13px] tracking-[.4px] shadow-[0_5px_0_#0B1D3F] motion-safe:animate-[duckyBob_6s_ease-in-out_infinite]">
             SINCE 2021
@@ -58,7 +58,7 @@ export function Header({
           </div>
         </div>
 
-        <div className="min-w-[340px] max-w-[560px] flex-1 basis-[440px]">
+        <div className="min-w-[260px] max-w-[560px] flex-1 basis-[440px] sm:min-w-[340px]">
           <div className="mb-5 inline-flex items-center gap-[9px] rounded-full border-[3px] border-[#0B1D3F] bg-[#0B1D3F]/90 py-[7px] pr-[15px] pl-3">
             <span className="h-[9px] w-[9px] rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
             <span className="boldFont text-[13px] tracking-[.3px] text-white">

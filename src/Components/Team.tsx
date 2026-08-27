@@ -121,14 +121,14 @@ export function Team() {
           style={heading.style}
           className="mb-[30px] flex flex-wrap items-end gap-4"
         >
-          <h2 className="boldFont m-0 text-[clamp(32px,3.6vw,48px)] tracking-[-1.2px] text-[#0B1D3F]">
+          <h2 className="boldFont m-0 text-[clamp(32px,3.6vw,48px)] tracking-[-1.2px] text-[var(--ink)]">
             The ducks behind it
           </h2>
-          <p className="m-0 mb-2 text-base text-[#0B1D3F]/[62%]">
+          <p className="m-0 mb-2 text-base text-[var(--ink)]/[62%]">
             Two people, eight games.
           </p>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-[26px]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-[26px]">
           {devs.map((dev, i) => (
             <DevCard key={dev.userId} dev={dev} index={i} />
           ))}

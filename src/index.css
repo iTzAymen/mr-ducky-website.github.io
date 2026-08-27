@@ -3,6 +3,24 @@
 @import "./fonts/Nexa/stylesheet.css";
 @tailwind utilities;
 
+/* Class-based dark mode: toggled via JS (useTheme), defaulting to the
+   device's prefers-color-scheme on first load. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-page: #eaf6ff;
+  --surface: #ffffff;
+  --ink: #0b1d3f;
+  --outline: #0b1d3f;
+}
+
+.dark {
+  --bg-page: #050b18;
+  --surface: #16244a;
+  --ink: #eaf6ff;
+  --outline: #000000;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
@@ -12,9 +30,10 @@
     margin: 0;
     font-family: "Nexa", "Nunito", sans-serif;
     font-weight: 400;
-    background-color: #eaf6ff;
+    background-color: var(--bg-page);
     color: #0b1d3f;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease;
   }
 
   a {
