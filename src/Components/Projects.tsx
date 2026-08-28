@@ -25,9 +25,19 @@ const LikeIcon = () => (
   </svg>
 );
 
-function Stat({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+function Stat({
+  icon,
+  children,
+  className = "",
+}: {
+  icon: ReactNode;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <span className="defaultFont inline-flex items-center gap-1 font-bold">
+    <span
+      className={`defaultFont inline-flex items-center gap-1 font-bold ${className}`}
+    >
       <span className="text-[var(--ink)]/45">{icon}</span>
       {children}
     </span>
@@ -37,11 +47,7 @@ function Stat({ icon, children }: { icon: ReactNode; children: ReactNode }) {
 function LikeBadge({ project }: { project: ProjectData }) {
   const pct = likePercent(project.upVotes, project.downVotes);
   if (pct == null) return null;
-  return (
-    <Stat icon={<LikeIcon />}>
-      {pct}%
-    </Stat>
-  );
+  return <Stat icon={<LikeIcon />}>{pct}%</Stat>;
 }
 
 type SortMode = "visits" | "ccu" | "date";
@@ -101,7 +107,7 @@ function GameCard({ project, index }: { project: ProjectData; index: number }) {
           {project.name}
         </h3>
         {project.collab ? (
-          <span className="boldFont flex-none rounded-full border-2 border-[#0A66E0] bg-[#EAF6FF] px-[9px] py-1 text-xs text-[#0A66E0]">
+          <span className="boldFont flex-none rounded-full border-2 border-[#0A66E0] bg-[#EAF6FF] dark:bg-[#0A66E0] dark:border-[#0B1D3F] dark:text-[#EAF6FF] px-[9px] py-1 text-xs text-[#0A66E0]">
             COLLAB
           </span>
         ) : (
@@ -137,22 +143,25 @@ function ArchiveRow({ project }: { project: ProjectData }) {
       href={playHref}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-[18px] border-[3px] border-[var(--outline)]/30 bg-[var(--surface)] px-4 py-3 transition-all duration-150 hover:translate-x-[6px] hover:border-[var(--outline)] hover:shadow-[-6px_0_0_#FFFF0D]"
+      className="flex items-center gap-x-3 rounded-[18px] border-[3px] border-[var(--outline)]/30 bg-[var(--surface)] px-4 py-3 transition-all duration-150 hover:translate-x-[6px] hover:border-[var(--outline)] hover:shadow-[-6px_0_0_#FFFF0D]"
     >
       <img
         src={project.thumbnails[0] ?? ""}
         alt={project.name}
         className="h-[42px] w-[74px] flex-none rounded-[9px] border-2 border-[var(--outline)] object-cover"
       />
-      <span className="boldFont text-base text-[var(--ink)]">
+      <span className="boldFont min-w-0 flex-1 truncate text-base text-[var(--ink)] sm:max-w-[40%] sm:flex-none">
         {project.name}
       </span>
-      <span className="defaultFont hidden min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm text-[var(--ink)]/60 sm:block">
+      <span className="defaultFont hidden min-w-0 flex-1 truncate text-sm text-[var(--ink)]/60 sm:block">
         {project.description}
       </span>
-      <span className="defaultFont ml-auto flex-none text-[13.5px] font-bold text-[var(--ink)]/60 sm:ml-0">
-        {abbreviateNumber(project.visits)} visits
-      </span>
+      <Stat
+        className="flex-none text-[13.5px] text-[var(--ink)]/60"
+        icon={<VisitsIcon />}
+      >
+        {abbreviateNumber(project.visits)}
+      </Stat>
       <span className="flex-none text-[13px] font-bold text-[var(--ink)]/40">
         {year}
       </span>
