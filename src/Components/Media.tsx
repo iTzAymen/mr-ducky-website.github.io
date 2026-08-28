@@ -120,7 +120,7 @@ export function Media() {
             <h3 className="boldFont mt-2 mb-3 text-lg tracking-[-.3px] text-[var(--ink)]/75">
               Shorts
             </h3>
-            <div className="ducky-scrollbar -mx-6 flex gap-4 overflow-x-auto px-6 pt-1 pb-4">
+            <div className="ducky-scrollbar -mx-6 flex gap-4 overflow-x-auto px-6 pt-1 pb-3">
               {shorts.map((video, i) => (
                 <VideoCard key={video.id} video={video} portrait index={i} />
               ))}
