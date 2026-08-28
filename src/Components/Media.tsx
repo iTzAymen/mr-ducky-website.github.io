@@ -116,18 +116,19 @@ export function Media() {
             href={contacts.YouTube}
             target="_blank"
             rel="noopener noreferrer"
-            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
+            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[#0B1D3F] bg-[#FF0000] px-4 py-2.5 text-sm text-white transition-transform duration-150 hover:-translate-y-0.5 dark:border-white/25"
           >
-            <YouTubeIcon className="h-[18px] w-[18px]" />
+            <YouTubeIcon className="h-[18px] w-[18px] fill-current" />
             More on YouTube
           </a>
           <a
             href={contacts.TikTok}
             target="_blank"
             rel="noopener noreferrer"
-            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
+            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[#0B1D3F] bg-black px-4 py-2.5 text-sm text-white transition-transform duration-150 hover:-translate-y-0.5 dark:border-white/25 dark:bg-white dark:text-[#0B1D3F]"
           >
-            <TikTokIcon className="h-[16px] w-[16px]" />@{STUDIO.tiktokHandle}
+            <TikTokIcon className="h-[16px] w-[16px] fill-current" />@
+            {STUDIO.tiktokHandle}
           </a>
         </div>
       </div>
