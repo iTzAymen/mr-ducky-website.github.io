@@ -6,6 +6,10 @@ import { Ticker } from "./Components/Ticker";
 import { About } from "./Components/About";
 import { Team } from "./Components/Team";
 import { Contacts } from "./Components/Contacts";
+import { Timeline } from "./Components/Timeline";
+import { Media } from "./Components/Media";
+import { Collaborations } from "./Components/Collaborations";
+import { Faq } from "./Components/Faq";
 import { StructuredData } from "./Components/StructuredData";
 
 import projects from "./Data/projects.json";
@@ -13,6 +17,7 @@ import { useState, useEffect } from "react";
 import {
   fetchProjectThumbnails,
   fetchProjectData,
+  fetchProjectVotes,
   fetchGroupData,
 } from "./dataFetch";
 import { useTheme } from "./hooks/useTheme";
@@ -80,6 +85,17 @@ function App() {
           );
         }),
       );
+
+      pending.push(
+        fetchProjectVotes(universeId).then((votes) => {
+          if (!votes) return;
+          setProjectsData((prev) =>
+            prev.map((proj) =>
+              proj.universeId === universeId ? { ...proj, ...votes } : proj,
+            ),
+          );
+        }),
+      );
     }
 
     pending.push(
@@ -131,8 +147,12 @@ function App() {
         gamesShipped={gamesShipped}
         statsLoading={statsLoading}
       />
+      <Timeline />
       <Projects featured={featured} games={gridGames} archive={archiveGames} />
+      <Media />
       <Team gamesShipped={gamesShipped} />
+      <Collaborations />
+      <Faq />
       <Contacts groupMembers={groupMembers} />
       <Footer />
     </div>

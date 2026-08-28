@@ -2,7 +2,7 @@ import { TiltCard } from "./TiltCard";
 import { GameThumbnail } from "./GameThumbnail";
 import { useReveal } from "../hooks/useReveal";
 import { useConfetti } from "../hooks/useConfetti";
-import { abbreviateNumber } from "../utils";
+import { abbreviateNumber, likePercent } from "../utils";
 import type { ProjectData } from "../Types";
 
 export function FeaturedGame({ project }: { project: ProjectData }) {
@@ -10,6 +10,7 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
   const onConfetti = useConfetti();
   const launchYear = new Date(project.created).getFullYear();
   const playHref = `https://www.roblox.com/games/${project.placeId}`;
+  const liked = likePercent(project.upVotes, project.downVotes);
 
   return (
     <TiltCard
@@ -64,6 +65,11 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
           <span className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
             Launched {launchYear}
           </span>
+          {liked != null && (
+            <span className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
+              {liked}% liked
+            </span>
+          )}
         </div>
         <a
           href={playHref}

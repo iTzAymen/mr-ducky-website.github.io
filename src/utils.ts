@@ -34,6 +34,20 @@ export function getYouTubeEmbedUrl(url: string): string | null {
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
 
+/**
+ * Roblox-style like percentage from up/down vote counts. Returns null when
+ * there aren't enough votes to be meaningful.
+ */
+export function likePercent(
+  upVotes?: number,
+  downVotes?: number,
+): number | null {
+  if (upVotes == null || downVotes == null) return null;
+  const total = upVotes + downVotes;
+  if (total < 20) return null;
+  return Math.round((upVotes / total) * 100);
+}
+
 export function abbreviateNumber(num: number, hidePlus?: boolean): string {
   if (num >= 1_000_000_000) {
     return (

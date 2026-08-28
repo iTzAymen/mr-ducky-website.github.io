@@ -106,6 +106,28 @@ function fetchProjectData(
   );
 }
 
+interface FetchedVotes {
+  upVotes: number;
+  downVotes: number;
+}
+
+function fetchProjectVotes(universeId: string): Promise<FetchedVotes | null> {
+  return cached<FetchedVotes | null>(
+    `votes:${universeId}`,
+    () =>
+      fetch(`https://games.${API_BASE_URL}games/${universeId}/votes`)
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then((data) => ({
+          upVotes: data.upVotes ?? 0,
+          downVotes: data.downVotes ?? 0,
+        })),
+    null,
+  );
+}
+
 function fetchGroupData(
   groupId: string,
 ): Promise<{ memberCount: number } | null> {
@@ -122,4 +144,9 @@ function fetchGroupData(
   );
 }
 
-export { fetchProjectThumbnails, fetchProjectData, fetchGroupData };
+export {
+  fetchProjectThumbnails,
+  fetchProjectData,
+  fetchProjectVotes,
+  fetchGroupData,
+};

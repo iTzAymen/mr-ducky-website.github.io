@@ -5,8 +5,10 @@ import { useScrolled } from "../hooks/useScrolled";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
+  { label: "Story", href: "#story" },
   { label: "Games", href: "#games" },
   { label: "Team", href: "#team" },
+  { label: "FAQ", href: "#faq" },
   { label: "Join", href: "#join" },
 ];
 
@@ -42,7 +44,7 @@ export function NavBar({
       </a>
 
       <div className="ml-auto flex items-center gap-1.5">
-        <div className="hidden items-center gap-1.5 sm:flex">
+        <div className="hidden items-center gap-1.5 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -98,7 +100,7 @@ export function NavBar({
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="flex h-9 w-9 flex-none items-center justify-center rounded-full border-2 border-[#0B1D3F] bg-white sm:hidden"
+          className="flex h-9 w-9 flex-none items-center justify-center rounded-full border-2 border-[#0B1D3F] bg-white lg:hidden"
         >
           <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none">
             {menuOpen ? (
@@ -123,7 +125,7 @@ export function NavBar({
       </div>
 
       {menuOpen && (
-        <div className="absolute inset-x-0 top-full flex flex-col gap-1 border-b-4 border-[#0B1D3F] bg-[#FFFF0D] px-4 py-3 shadow-[0_10px_26px_rgba(11,29,63,.28)] sm:hidden">
+        <div className="absolute inset-x-0 top-full flex flex-col gap-1 border-b-4 border-[#0B1D3F] bg-[#FFFF0D] px-4 py-3 shadow-[0_10px_26px_rgba(11,29,63,.28)] lg:hidden">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}

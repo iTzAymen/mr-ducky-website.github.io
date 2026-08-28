@@ -9,6 +9,8 @@ export interface ProjectData {
   thumbnails: string[];
   videos?: string[]; // Optional YouTube links, played on thumbnail hover
   playing: number;
+  upVotes?: number; // Roblox like count (fetched)
+  downVotes?: number; // Roblox dislike count (fetched)
   noFetch: boolean;
   isNew?: boolean; // Optional property to indicate if the project is new
   featured?: boolean; // Gets the hero-sized featured card in the games section

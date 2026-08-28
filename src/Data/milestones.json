@@ -1,0 +1,55 @@
+[
+  {
+    "year": "2021",
+    "title": "Mr.Ducky Studio is founded",
+    "body": "Two friends, a shared Roblox group, and a run of small obbies and experiments like Animal Island.",
+    "kind": "founded"
+  },
+  {
+    "year": "2021",
+    "title": "The Squid Game launches",
+    "body": "Our fan-made take on the Netflix show hits at exactly the right moment and becomes the studio's breakout title.",
+    "kind": "launch",
+    "href": "https://www.roblox.com/games/7554194743"
+  },
+  {
+    "year": "2022",
+    "title": "Wordly & Fall Block",
+    "body": "A daily word puzzle and a block-breaking PVP experience — back-to-back releases in a single year.",
+    "kind": "launch"
+  },
+  {
+    "year": "2023",
+    "title": "Nation Survival, with Tiny Comet",
+    "body": "Our first publishing partnership — a 1600s Jamestown survival game built under Tiny Comet.",
+    "kind": "collab",
+    "href": "https://www.roblox.com/games/14636421997"
+  },
+  {
+    "year": "2024",
+    "title": "Chained Up races past 10M visits",
+    "body": "A co-op climbing challenge inspired by Chained Together — our fastest-growing release yet.",
+    "kind": "milestone",
+    "href": "https://www.roblox.com/games/18904374254"
+  },
+  {
+    "year": "2024",
+    "title": "Liar's Game joins Altera",
+    "body": "Altera acquires our social deduction game and we relaunch it as Truths Table, with AI agents that play and chat alongside you.",
+    "kind": "collab",
+    "href": "https://www.roblox.com/games/101586178170334"
+  },
+  {
+    "year": "2025",
+    "title": "The Squid Game crosses 65M visits",
+    "body": "Four years on, the game that put us on the map is still going strong.",
+    "kind": "milestone"
+  },
+  {
+    "year": "2026",
+    "title": "Untitled Golf Game",
+    "body": "Fast-paced multiplayer golf — race other players across chaotic courses, earn coins, and climb the leaderboards.",
+    "kind": "launch",
+    "href": "https://www.roblox.com/games/136650991799295"
+  }
+]

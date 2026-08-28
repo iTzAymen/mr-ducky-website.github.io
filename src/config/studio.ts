@@ -19,4 +19,9 @@ export const STUDIO = {
   // All-time peak concurrent players across every experience. Bump when a game
   // sets a new record.
   peakCcu: 13_000,
+
+  // Social channels used by the media gallery / fetch script.
+  youtubeHandle: "iTzAymen",
+  youtubeChannelId: "UCvKvyyrmJpfUpjFMgdVoOBg",
+  tiktokHandle: "mr.ducky.studio",
 } as const;

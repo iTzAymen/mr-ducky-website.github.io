@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Tiny Comet",
+    "tag": "PUBLISHING PARTNER",
+    "blurb": "We built Nation Survival under Tiny Comet — a 1600s Jamestown survival game where you farm, hunt, build, and fight to keep your colony alive.",
+    "accent": "#FF7A18",
+    "links": [
+      { "label": "X / Twitter", "href": "https://x.com/TinyCometInc" },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/company/tiny-comet/"
+      }
+    ],
+    "credits": [
+      {
+        "label": "Nation Survival",
+        "href": "https://www.roblox.com/games/14636421997"
+      }
+    ]
+  },
+  {
+    "name": "Altera",
+    "tag": "ACQUIRED · NOW FUNDAMENTAL RESEARCH LABS",
+    "blurb": "We created Liar's Game, then Altera acquired it. Together we relaunched it as Truths Table, adding AI agents that play and chat with you in real time. Aymen and Mohomesad also built AI Friendzone RP for Altera.",
+    "accent": "#5C68EE",
+    "links": [
+      { "label": "X / Twitter", "href": "https://x.com/Altera_AL" },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/company/shortcutai/"
+      }
+    ],
+    "credits": [
+      {
+        "label": "Truths Table",
+        "href": "https://www.roblox.com/games/101586178170334"
+      },
+      {
+        "label": "AI Friendzone RP",
+        "href": "https://www.roblox.com/games/94512822804488/AI-Friendzone-RP"
+      }
+    ]
+  }
+]

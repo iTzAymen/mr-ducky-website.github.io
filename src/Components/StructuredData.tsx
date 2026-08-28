@@ -1,4 +1,5 @@
 import { STUDIO } from "../config/studio";
+import { FAQ_TEXT } from "../Data/faq";
 import type { ProjectData } from "../Types";
 
 /**
@@ -28,24 +29,36 @@ export function StructuredData({ projects }: { projects: ProjectData[] }) {
     }));
 
   // The Organization / WebSite nodes are declared statically in index.html
-  // (so no-JS crawlers get them); here we only add the live game catalog,
-  // linked back to that Organization by @id.
+  // (so no-JS crawlers get them); here we add the live game catalog and the
+  // FAQ, linked back to that Organization by @id.
   const graph = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${STUDIO.name} games`,
-    itemListElement: games.map((game, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        ...game,
-        publisher: {
-          "@type": "Organization",
-          "@id": `${STUDIO.domain}/#organization`,
-          name: STUDIO.name,
-        },
+    "@graph": [
+      {
+        "@type": "ItemList",
+        name: `${STUDIO.name} games`,
+        itemListElement: games.map((game, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            ...game,
+            publisher: {
+              "@type": "Organization",
+              "@id": `${STUDIO.domain}/#organization`,
+              name: STUDIO.name,
+            },
+          },
+        })),
       },
-    })),
+      {
+        "@type": "FAQPage",
+        mainEntity: FAQ_TEXT.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+    ],
   };
 
   return (

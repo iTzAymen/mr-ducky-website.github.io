@@ -3,8 +3,21 @@ import { TiltCard } from "./TiltCard";
 import { GameThumbnail } from "./GameThumbnail";
 import { FeaturedGame } from "./FeaturedGame";
 import { useReveal } from "../hooks/useReveal";
-import { abbreviateNumber } from "../utils";
+import { abbreviateNumber, likePercent } from "../utils";
 import type { ProjectData } from "../Types";
+
+function LikeBadge({ project }: { project: ProjectData }) {
+  const pct = likePercent(project.upVotes, project.downVotes);
+  if (pct == null) return null;
+  return (
+    <span className="boldFont inline-flex items-center gap-1 text-[13px] text-[var(--ink)]/70">
+      <svg viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="currentColor">
+        <path d="M2 21h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1H2v11ZM22 11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13.17 2 6.59 8.59C6.22 8.95 6 9.45 6 10v9c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1Z" />
+      </svg>
+      {pct}%
+    </span>
+  );
+}
 
 type SortMode = "visits" | "ccu" | "date";
 
@@ -77,9 +90,10 @@ function GameCard({ project, index }: { project: ProjectData; index: number }) {
         {project.description}
       </p>
       <div className="mt-auto mx-1 mb-1 flex items-center justify-between gap-2 border-t-[3px] border-dashed border-[var(--outline)]/15 pt-3">
-        <span className="defaultFont text-[13.5px] font-bold text-[var(--ink)]/70">
+        <span className="defaultFont flex items-center gap-2 text-[13.5px] font-bold text-[var(--ink)]/70">
           {abbreviateNumber(project.visits)} visits ·{" "}
           {abbreviateNumber(project.favorites)} favs
+          <LikeBadge project={project} />
         </span>
         <span className="text-[13px] font-bold text-[var(--ink)]/45">{year}</span>
       </div>
