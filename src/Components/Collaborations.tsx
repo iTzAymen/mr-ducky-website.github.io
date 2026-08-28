@@ -85,10 +85,10 @@ export function Collaborations() {
           className="mb-[30px] flex flex-wrap items-end gap-4"
         >
           <h2 className="boldFont m-0 text-[clamp(32px,3.6vw,48px)] tracking-[-1.2px] text-[var(--ink)]">
-            Studios we've worked with
+            Studios we worked with
           </h2>
           <p className="m-0 mb-2 max-w-[460px] text-base text-[var(--ink)]/[62%]">
-            Teams we've built for, and studios that picked up our games.
+            Teams we worked for, and studios that acquired our games.
           </p>
         </div>
 
