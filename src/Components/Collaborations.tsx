@@ -19,14 +19,14 @@ function CollabCard({
       className="relative flex flex-col gap-4 overflow-hidden rounded-[28px] border-4 border-[var(--outline)] bg-[var(--surface)] p-[26px] shadow-[0_8px_0_var(--outline)]"
     >
       <span
-        className="absolute inset-x-0 top-0 h-2"
+        className="absolute  inset-x-0 top-0 h-2"
         style={{ backgroundColor: collab.accent }}
         aria-hidden
       />
 
       <div>
         <span
-          className="boldFont inline-block rounded-full border-[3px] border-[#0B1D3F] px-3 py-1 text-[11px] tracking-[.5px] text-[#0B1D3F] uppercase"
+          className="defaultFont font-black inline-block rounded-full border-[3px] border-[#0B1D3F] px-3 py-1 text-[11px] tracking-[.5px] text-[#0B1D3F] uppercase"
           style={{ backgroundColor: collab.accent }}
         >
           {collab.tag}
@@ -48,7 +48,7 @@ function CollabCard({
               href={credit.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="boldFont rounded-[12px] border-[3px] border-[var(--outline)] bg-[var(--bg-page)] px-3 py-2 text-[13px] text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
+              className="defaultFont font-black rounded-[12px] border-[3px] border-[var(--outline)] bg-[var(--bg-page)] px-3 py-2 text-[13px] text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
             >
               {credit.label} ↗
             </a>
@@ -63,7 +63,7 @@ function CollabCard({
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="boldFont rounded-full border-[3px] border-[var(--outline)] px-3.5 py-2 text-[13px] text-[var(--ink)] transition-colors duration-150 hover:bg-[var(--ink)] hover:text-[var(--surface)]"
+            className="defaultFont font-black rounded-full border-[3px] border-[var(--outline)] px-3.5 py-2 text-[13px] text-[var(--ink)] transition-colors duration-150 hover:bg-[var(--ink)] hover:text-[var(--surface)]"
           >
             {link.label}
           </a>

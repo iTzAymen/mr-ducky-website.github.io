@@ -68,7 +68,12 @@ function App() {
           setProjectsData((prev) =>
             prev.map((proj) =>
               proj.universeId === universeId
-                ? { ...proj, thumbnails: thumbnails.length ? thumbnails : proj.thumbnails }
+                ? {
+                    ...proj,
+                    thumbnails: thumbnails.length
+                      ? thumbnails
+                      : proj.thumbnails,
+                  }
                 : proj,
             ),
           );
@@ -116,10 +121,7 @@ function App() {
   const gamesShipped = projectsData.length;
 
   const totalVisits = projectsData.reduce((acc, p) => acc + p.visits, 0);
-  const totalFavourites = projectsData.reduce(
-    (acc, p) => acc + p.favorites,
-    0,
-  );
+  const totalFavourites = projectsData.reduce((acc, p) => acc + p.favorites, 0);
   const totalPlaying = projectsData.reduce((acc, p) => acc + p.playing, 0);
 
   const playHref = featured
@@ -147,10 +149,10 @@ function App() {
         gamesShipped={gamesShipped}
         statsLoading={statsLoading}
       />
-      <Timeline />
       <Projects featured={featured} games={gridGames} archive={archiveGames} />
-      <Media />
       <Team gamesShipped={gamesShipped} />
+      <Media />
+      <Timeline />
       <Collaborations />
       <Faq />
       <Contacts groupMembers={groupMembers} />

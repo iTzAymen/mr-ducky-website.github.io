@@ -85,6 +85,38 @@
   }
 }
 
+/* Chunky on-brand horizontal scrollbar for the Shorts rail. Forcing
+   ::-webkit-scrollbar styles also keeps it permanently visible on macOS
+   (no fade-out overlay), so the row reads as scrollable at a glance. */
+.ducky-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ffd524 color-mix(in srgb, var(--outline) 14%, transparent);
+}
+
+.ducky-scrollbar::-webkit-scrollbar {
+  height: 12px;
+}
+
+.ducky-scrollbar::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--outline) 12%, transparent);
+  border-radius: 999px;
+  margin-inline: 24px;
+}
+
+.ducky-scrollbar::-webkit-scrollbar-thumb {
+  background: #ffff0d;
+  border: 3px solid #0b1d3f;
+  border-radius: 999px;
+}
+
+.ducky-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ffd524;
+}
+
+.ducky-scrollbar::-webkit-scrollbar-thumb:active {
+  background: #009dff;
+}
+
 @keyframes duckyBlob {
   0% {
     transform: translate(0, 0) scale(1);

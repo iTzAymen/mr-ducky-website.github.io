@@ -105,7 +105,12 @@ export function Media() {
         {wide.length > 0 && (
           <div className="mb-8 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-[22px]">
             {wide.map((video, i) => (
-              <VideoCard key={video.id} video={video} portrait={false} index={i} />
+              <VideoCard
+                key={video.id}
+                video={video}
+                portrait={false}
+                index={i}
+              />
             ))}
           </div>
         )}
@@ -115,14 +120,9 @@ export function Media() {
             <h3 className="boldFont mt-2 mb-3 text-lg tracking-[-.3px] text-[var(--ink)]/75">
               Shorts
             </h3>
-            <div className="-mx-6 flex gap-4 overflow-x-auto px-6 pb-3 [scrollbar-width:thin]">
+            <div className="ducky-scrollbar -mx-6 flex gap-4 overflow-x-auto px-6 pt-1 pb-4">
               {shorts.map((video, i) => (
-                <VideoCard
-                  key={video.id}
-                  video={video}
-                  portrait
-                  index={i}
-                />
+                <VideoCard key={video.id} video={video} portrait index={i} />
               ))}
             </div>
           </>
@@ -133,7 +133,7 @@ export function Media() {
             href={contacts.YouTube}
             target="_blank"
             rel="noopener noreferrer"
-            className="boldFont flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
+            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
           >
             <YouTubeIcon className="h-[18px] w-[18px]" />
             More on YouTube
@@ -142,10 +142,9 @@ export function Media() {
             href={contacts.TikTok}
             target="_blank"
             rel="noopener noreferrer"
-            className="boldFont flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
+            className="defaultFont font-black flex items-center gap-2.5 rounded-full border-[3px] border-[var(--outline)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition-transform duration-150 hover:-translate-y-0.5"
           >
-            <TikTokIcon className="h-[16px] w-[16px]" />
-            @{STUDIO.tiktokHandle}
+            <TikTokIcon className="h-[16px] w-[16px]" />@{STUDIO.tiktokHandle}
           </a>
         </div>
       </div>

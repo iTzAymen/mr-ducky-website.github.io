@@ -24,8 +24,8 @@ const FAQS: { q: string; a: ReactNode }[] = [
     q: "Do you take commissions?",
     a: (
       <>
-        Not at the moment — we're focused on our own games. If that changes we'll
-        announce it in the{" "}
+        Not at the moment — we're focused on our own games. If that changes
+        we'll announce it in the{" "}
         <ExternalLink href={contacts.Discord}>Discord</ExternalLink>.
       </>
     ),
@@ -60,14 +60,20 @@ const FAQS: { q: string; a: ReactNode }[] = [
     q: "Who makes the games?",
     a: (
       <>
-        Two people: Aymen (scripting, animation, UI) and Mohomesad (building, 3D,
-        scripting), plus partner studios on some titles.
+        Two people: Aymen (scripting, animation, UI) and Mohomesad (building,
+        3D, scripting), plus partner studios on some titles.
       </>
     ),
   },
 ];
 
-function FaqItem({ item, index }: { item: (typeof FAQS)[number]; index: number }) {
+function FaqItem({
+  item,
+  index,
+}: {
+  item: (typeof FAQS)[number];
+  index: number;
+}) {
   const { ref, style } = useReveal<HTMLDetailsElement>(index);
 
   return (
@@ -79,7 +85,7 @@ function FaqItem({ item, index }: { item: (typeof FAQS)[number]; index: number }
       <summary className="boldFont flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-[16.5px] text-[var(--ink)] [&::-webkit-details-marker]:hidden">
         {item.q}
         <span
-          className="flex h-7 w-7 flex-none items-center justify-center rounded-full border-2 border-[var(--outline)] text-lg leading-none text-[var(--ink)] transition-transform duration-200 group-open:rotate-45"
+          className="defaultFont font-black flex h-7 w-7 flex-none items-center justify-center rounded-full border-2 border-[var(--outline)] text-lg leading-none text-[var(--ink)] transition-transform duration-200 group-open:rotate-45"
           aria-hidden
         >
           +
