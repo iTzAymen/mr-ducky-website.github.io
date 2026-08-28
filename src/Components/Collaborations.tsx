@@ -88,7 +88,7 @@ export function Collaborations() {
             Studios we've worked with
           </h2>
           <p className="m-0 mb-2 max-w-[460px] text-base text-[var(--ink)]/[62%]">
-            Publishing partners and teams that have picked up our games.
+            Teams we've built for, and studios that picked up our games.
           </p>
         </div>
 

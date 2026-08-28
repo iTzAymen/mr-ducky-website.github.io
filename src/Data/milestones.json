@@ -2,53 +2,59 @@
   {
     "year": "2021",
     "title": "Mr.Ducky Studio is founded",
-    "body": "Two friends, a shared Roblox group, and a run of small obbies and experiments like Animal Island.",
+    "body": "We team up on our first title, Super Adventure Obby — the project where we both learned the basics of Roblox development.",
     "kind": "founded"
   },
   {
     "year": "2021",
-    "title": "The Squid Game launches",
-    "body": "Our fan-made take on the Netflix show hits at exactly the right moment and becomes the studio's breakout title.",
+    "title": "The Squid Game",
+    "body": "Fresh off our first game, we jump on the Squid Game trend right as it peaks. It becomes our first real hit.",
     "kind": "launch",
     "href": "https://www.roblox.com/games/7554194743"
   },
   {
     "year": "2022",
-    "title": "Wordly & Fall Block",
-    "body": "A daily word puzzle and a block-breaking PVP experience — back-to-back releases in a single year.",
+    "title": "Going solo for a while",
+    "body": "With the hype settled, we split off onto our own projects to sharpen up — Aymen builds Wordly, Mohomesad builds Fall Block.",
     "kind": "launch"
   },
   {
     "year": "2023",
-    "title": "Nation Survival, with Tiny Comet",
-    "body": "Our first publishing partnership — a 1600s Jamestown survival game built under Tiny Comet.",
+    "title": "Working with Tiny Comet",
+    "body": "Tiny Comet finds our earlier games and brings us on to build for them. This is where we really learn game design and how to tackle hard problems.",
     "kind": "collab",
     "href": "https://www.roblox.com/games/14636421997"
   },
   {
     "year": "2024",
-    "title": "Chained Up races past 10M visits",
-    "body": "A co-op climbing challenge inspired by Chained Together — our fastest-growing release yet.",
-    "kind": "milestone",
+    "title": "Chained Up",
+    "body": "Back on our own games, we ship Chained Up — a co-op climb inspired by Chained Together, and our second big hit.",
+    "kind": "launch",
     "href": "https://www.roblox.com/games/18904374254"
   },
   {
     "year": "2024",
-    "title": "Liar's Game joins Altera",
-    "body": "Altera acquires our social deduction game and we relaunch it as Truths Table, with AI agents that play and chat alongside you.",
+    "title": "Working with Altera",
+    "body": "We join Altera to build AI Friendzone for them. On the side, our Liar's Game climbs past 2K concurrent players — and Altera acquires it, relaunching it as Truths Table with AI agents.",
     "kind": "collab",
     "href": "https://www.roblox.com/games/101586178170334"
   },
   {
+    "year": "2024",
+    "title": "The Squid Game, round two",
+    "body": "Netflix drops Season 2 and our 2021 game explodes to 13K+ concurrent players. We start a full revamp.",
+    "kind": "milestone"
+  },
+  {
     "year": "2025",
-    "title": "The Squid Game crosses 65M visits",
-    "body": "Four years on, the game that put us on the map is still going strong.",
+    "title": "The Squid Game, round three",
+    "body": "Season 3 pushes the game to new visit records and the community grows past 600K members.",
     "kind": "milestone"
   },
   {
     "year": "2026",
     "title": "Untitled Golf Game",
-    "body": "Fast-paced multiplayer golf — race other players across chaotic courses, earn coins, and climb the leaderboards.",
+    "body": "Our newest game: fast, chaotic multiplayer golf where you race other players across the course.",
     "kind": "launch",
     "href": "https://www.roblox.com/games/136650991799295"
   }

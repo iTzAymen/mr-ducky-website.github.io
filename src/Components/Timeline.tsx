@@ -7,7 +7,7 @@ const KIND: Record<Kind, { label: string; color: string }> = {
   founded: { label: "Founded", color: "#FFFF0D" },
   launch: { label: "Launch", color: "#009DFF" },
   milestone: { label: "Milestone", color: "#FF7A18" },
-  collab: { label: "Collab", color: "#5C68EE" },
+  collab: { label: "Client work", color: "#5C68EE" },
 };
 
 function MilestoneRow({

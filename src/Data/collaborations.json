@@ -1,8 +1,8 @@
 [
   {
     "name": "Tiny Comet",
-    "tag": "PUBLISHING PARTNER",
-    "blurb": "We built Nation Survival under Tiny Comet — a 1600s Jamestown survival game where you farm, hunt, build, and fight to keep your colony alive.",
+    "tag": "WE BUILT FOR THEM · 2023",
+    "blurb": "Tiny Comet brought us on after seeing our earlier games. We built Nation Survival for them — a 1600s Jamestown survival game — and came out of it with a much stronger grip on game design and hard technical problems.",
     "accent": "#FF7A18",
     "links": [
       { "label": "X / Twitter", "href": "https://x.com/TinyCometInc" },
@@ -20,8 +20,8 @@
   },
   {
     "name": "Altera",
-    "tag": "ACQUIRED · NOW FUNDAMENTAL RESEARCH LABS",
-    "blurb": "We created Liar's Game, then Altera acquired it. Together we relaunched it as Truths Table, adding AI agents that play and chat with you in real time. Aymen and Mohomesad also built AI Friendzone RP for Altera.",
+    "tag": "WE BUILT FOR THEM · ACQUIRED LIAR'S GAME",
+    "blurb": "We built AI Friendzone RP for Altera (now Fundamental Research Labs). Separately, our social deduction game Liar's Game grew past 2K concurrent players — Altera acquired it and we relaunched it as Truths Table, with AI agents that play and chat alongside you.",
     "accent": "#5C68EE",
     "links": [
       { "label": "X / Twitter", "href": "https://x.com/Altera_AL" },
