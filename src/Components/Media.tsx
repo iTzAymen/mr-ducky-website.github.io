@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useReveal } from "../hooks/useReveal";
 import { STUDIO } from "../config/studio";
 import { ReactComponent as YouTubeIcon } from "../assets/youtube.svg";
@@ -10,17 +9,12 @@ type Video = { id: string; title: string; kind: string };
 
 const isShort = (v: Video) => v.kind === "short";
 
-function embedUrl(id: string) {
-  const params = new URLSearchParams({
-    autoplay: "1",
-    rel: "0",
-    playsinline: "1",
-    modestbranding: "1",
-  });
-  return `https://www.youtube.com/embed/${id}?${params.toString()}`;
-}
+const watchUrl = (video: Video) =>
+  isShort(video)
+    ? `https://www.youtube.com/shorts/${video.id}`
+    : `https://www.youtube.com/watch?v=${video.id}`;
 
-/** Thumbnail + play button; swaps in the YouTube iframe only once clicked. */
+/** Thumbnail that opens the video on YouTube in a new tab. */
 function VideoCard({
   video,
   portrait,
@@ -30,52 +24,41 @@ function VideoCard({
   portrait: boolean;
   index: number;
 }) {
-  const { ref, style } = useReveal<HTMLDivElement>(index);
-  const [playing, setPlaying] = useState(false);
+  const { ref, style } = useReveal<HTMLAnchorElement>(index);
 
   return (
-    <div
+    <a
       ref={ref}
       style={style}
-      className={`flex flex-col ${portrait ? "w-[210px] flex-none sm:w-[230px]" : ""}`}
+      href={watchUrl(video)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Watch on YouTube: ${video.title}`}
+      className={`group flex flex-col ${portrait ? "w-[210px] flex-none sm:w-[230px]" : ""}`}
     >
       <div
-        className={`group relative overflow-hidden rounded-[18px] border-4 border-[var(--outline)] bg-[#0B1D3F] shadow-[0_6px_0_var(--outline)] ${
+        className={`relative overflow-hidden rounded-[18px] border-4 border-[var(--outline)] bg-[#0B1D3F] shadow-[0_6px_0_var(--outline)] ${
           portrait ? "aspect-[9/16]" : "aspect-video"
         }`}
       >
-        {playing ? (
-          <iframe
-            src={embedUrl(video.id)}
-            title={video.title}
-            className="absolute inset-0 h-full w-full"
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => setPlaying(true)}
-            aria-label={`Play: ${video.title}`}
-            className="absolute inset-0 h-full w-full cursor-pointer"
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
-              alt=""
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
-            />
-            <span className="absolute inset-0 bg-[#0B1D3F]/10 transition-colors duration-200 group-hover:bg-[#0B1D3F]/0" />
-            <span className="absolute top-1/2 left-1/2 flex h-[54px] w-[54px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-[#0B1D3F] bg-[#FFFF0D] shadow-[0_4px_0_#0B1D3F] transition-transform duration-150 group-hover:scale-110">
-              <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-[#0B1D3F]" />
-            </span>
-          </button>
-        )}
+        <img
+          src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
+        />
+        <span className="absolute inset-0 bg-[#0B1D3F]/10 transition-colors duration-200 group-hover:bg-[#0B1D3F]/0" />
+        <span className="absolute top-1/2 left-1/2 flex h-[54px] w-[54px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-[#0B1D3F] bg-[#FFFF0D] shadow-[0_4px_0_#0B1D3F] transition-transform duration-150 group-hover:scale-110">
+          <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-[#0B1D3F]" />
+        </span>
       </div>
-      <p className="defaultFont mx-1 mt-2.5 text-[13.5px] leading-[1.4] font-bold text-[var(--ink)]/[72%]">
+      <p className="defaultFont mx-1 mt-2.5 flex items-center gap-1 text-[13.5px] leading-[1.4] font-bold text-[var(--ink)]/[72%]">
         {video.title}
+        <span className="text-[var(--ink)]/40 transition-transform duration-150 group-hover:translate-x-0.5">
+          ↗
+        </span>
       </p>
-    </div>
+    </a>
   );
 }
 
