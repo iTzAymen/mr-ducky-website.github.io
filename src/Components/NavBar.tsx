@@ -5,9 +5,9 @@ import { useScrolled } from "../hooks/useScrolled";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Story", href: "#story" },
   { label: "Games", href: "#games" },
   { label: "Team", href: "#team" },
+  { label: "Story", href: "#story" },
   { label: "FAQ", href: "#faq" },
   { label: "Join", href: "#join" },
 ];

@@ -41,7 +41,7 @@ function CollabCard({
 
       <div>
         <span
-          className="defaultFont font-black inline-block rounded-full border-[3px] border-[#0B1D3F] px-3 py-1 text-[11px] tracking-[.5px] text-[#0B1D3F] uppercase"
+          className="defaultFont font-black inline-block max-w-full truncate rounded-full border-[3px] border-[#0B1D3F] px-3 py-1 align-bottom text-[11px] tracking-[.5px] whitespace-nowrap text-[#0B1D3F] uppercase"
           style={{ backgroundColor: collab.accent }}
         >
           {collab.tag}
