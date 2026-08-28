@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import { TiltCard } from "./TiltCard";
 import { GameThumbnail } from "./GameThumbnail";
 import { FeaturedGame } from "./FeaturedGame";
@@ -6,20 +7,40 @@ import { useReveal } from "../hooks/useReveal";
 import { abbreviateNumber, likePercent } from "../utils";
 import type { ProjectData } from "../Types";
 
+const VisitsIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="currentColor">
+    <path d="M12 5c-5 0-9.27 3.11-11 7.5C2.73 16.89 7 20 12 20s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5Zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+  </svg>
+);
+
+const FavIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="currentColor">
+    <path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" />
+  </svg>
+);
+
+const LikeIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="currentColor">
+    <path d="M2 21h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1H2v11ZM22 11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13.17 2 6.59 8.59C6.22 8.95 6 9.45 6 10v9c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1Z" />
+  </svg>
+);
+
+function Stat({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+  return (
+    <span className="defaultFont inline-flex items-center gap-1 font-bold">
+      <span className="text-[var(--ink)]/45">{icon}</span>
+      {children}
+    </span>
+  );
+}
+
 function LikeBadge({ project }: { project: ProjectData }) {
   const pct = likePercent(project.upVotes, project.downVotes);
   if (pct == null) return null;
   return (
-    <span className="defaultFont font-black inline-flex items-center gap-1 text-[13px] text-[var(--ink)]/70">
-      <svg
-        viewBox="0 0 24 24"
-        className="h-[13px] w-[13px]"
-        fill="currentColor"
-      >
-        <path d="M2 21h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1H2v11ZM22 11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13.17 2 6.59 8.59C6.22 8.95 6 9.45 6 10v9c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1Z" />
-      </svg>
+    <Stat icon={<LikeIcon />}>
       {pct}%
-    </span>
+    </Stat>
   );
 }
 
@@ -94,9 +115,9 @@ function GameCard({ project, index }: { project: ProjectData; index: number }) {
         {project.description}
       </p>
       <div className="mt-auto mx-1 mb-1 flex items-center justify-between gap-2 border-t-[3px] border-dashed border-[var(--outline)]/15 pt-3">
-        <span className="defaultFont flex items-center gap-2 text-[13.5px] font-bold text-[var(--ink)]/70">
-          {abbreviateNumber(project.visits)} visits ·{" "}
-          {abbreviateNumber(project.favorites)} favs
+        <span className="flex items-center gap-x-3 gap-y-1 text-[13px] text-[var(--ink)]/70">
+          <Stat icon={<VisitsIcon />}>{abbreviateNumber(project.visits)}</Stat>
+          <Stat icon={<FavIcon />}>{abbreviateNumber(project.favorites)}</Stat>
           <LikeBadge project={project} />
         </span>
         <span className="text-[13px] font-bold text-[var(--ink)]/45">
