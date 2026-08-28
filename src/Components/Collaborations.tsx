@@ -1,6 +1,21 @@
+import type { ComponentType, SVGProps } from "react";
 import { TiltCard } from "./TiltCard";
 import { useReveal } from "../hooks/useReveal";
 import collabs from "../Data/collaborations.json";
+
+import { ReactComponent as RobloxIcon } from "../assets/roblox.svg";
+import { ReactComponent as TwitterIcon } from "../assets/twitter.svg";
+import { ReactComponent as LinkedInIcon } from "../assets/linkedin.svg";
+
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+
+function iconFor(label: string): IconComponent | null {
+  const key = label.toLowerCase();
+  if (key.includes("roblox")) return RobloxIcon;
+  if (key.includes("twitter") || key.includes("x /")) return TwitterIcon;
+  if (key.includes("linkedin")) return LinkedInIcon;
+  return null;
+}
 
 function CollabCard({
   collab,
@@ -57,17 +72,21 @@ function CollabCard({
       )}
 
       <div className="mt-auto flex flex-wrap gap-2.5 pt-1">
-        {collab.links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="defaultFont font-black rounded-full border-[3px] border-[var(--outline)] px-3.5 py-2 text-[13px] text-[var(--ink)] transition-colors duration-150 hover:bg-[var(--ink)] hover:text-[var(--surface)]"
-          >
-            {link.label}
-          </a>
-        ))}
+        {collab.links.map((link) => {
+          const Icon = iconFor(link.label);
+          return (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="defaultFont font-black flex items-center gap-1.5 rounded-full border-[3px] border-[var(--outline)] px-3.5 py-2 text-[13px] text-[var(--ink)] transition-colors duration-150 hover:bg-[var(--ink)] hover:text-[var(--surface)]"
+            >
+              {Icon && <Icon className="h-[14px] w-[14px] fill-current" />}
+              {link.label}
+            </a>
+          );
+        })}
       </div>
     </TiltCard>
   );
