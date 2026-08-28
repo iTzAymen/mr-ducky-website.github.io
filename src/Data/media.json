@@ -1,5 +1,5 @@
 {
-  "note": "Hand-picked gallery. Run `npm run media` to list new uploads from the channel RSS feed, then add the good ones here with a clean title and the right kind (trailer | gameplay | short).",
+  "note": "Hand-curated gallery. `npm run media` lists new uploads from the channel RSS feed; add the good ones here with a clean title and the right kind (trailer | gameplay | short). Shorts render in the order listed (newest first).",
   "youtube": [
     {
       "id": "saM01WFicF8",
@@ -18,18 +18,33 @@
       "kind": "gameplay"
     },
     {
+      "id": "uBx3O-81NNM",
+      "title": "The Squid Game — Sky Squid Pro",
+      "kind": "gameplay"
+    },
+    {
+      "id": "KD4456leBc0",
+      "title": "The Squid Game — Sky Squid",
+      "kind": "gameplay"
+    },
+    {
       "id": "QOuec4Omy4g",
       "title": "The Squid Game — Hide and Seek",
       "kind": "gameplay"
     },
     {
+      "id": "WxIySZRttG0",
+      "title": "The Squid Game — Jump Rope",
+      "kind": "gameplay"
+    },
+    {
       "id": "d2sl-TQ5Sf4",
-      "title": "Roblox games to play with your friends",
+      "title": "Roblox games to play with friends",
       "kind": "short"
     },
     {
       "id": "_ARidy6RiR8",
-      "title": "Looking for a good Roblox game to play?",
+      "title": "Looking for a good Roblox game?",
       "kind": "short"
     },
     {
@@ -43,8 +58,18 @@
       "kind": "short"
     },
     {
+      "id": "mFLV5H4iUmU",
+      "title": "I added the flintlock",
+      "kind": "short"
+    },
+    {
       "id": "JGfWeSrVIY8",
       "title": "Bro didn't even try",
+      "kind": "short"
+    },
+    {
+      "id": "vbELPF4bQFA",
+      "title": "Bro stole my win",
       "kind": "short"
     }
   ],
