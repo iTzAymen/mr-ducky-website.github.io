@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import {
   fetchProjectThumbnails,
   fetchProjectData,
+  fetchLiveGames,
   fetchProjectVotes,
   fetchGroupData,
 } from "./dataFetch";
@@ -25,7 +26,8 @@ import { STUDIO } from "./config/studio";
 
 import type { ProjectData } from "./Types";
 
-const LIVE_POLL_MS = 60 * 1000;
+const LIVE_MIN_MS = 2_000;
+const LIVE_MAX_MS = 60_000;
 
 function App() {
   const [projectsData, setProjectsData] = useState<ProjectData[]>(
@@ -114,25 +116,42 @@ function App() {
 
     Promise.allSettled(pending).then(() => setStatsLoading(false));
 
-    // Keep player counts / visits / group size live while the tab is open.
-    const poll = window.setInterval(() => {
-      if (document.hidden) return;
-      for (const p of projects) {
-        if (p.noFetch) continue;
-        fetchProjectData(p.universeId).then((data) => {
-          if (!data) return;
+    // Live counters: poll with exponential backoff (2s, 4s, 8s ... capped at
+    // 60s). Any user activity snaps it back to 2s; hidden tabs are skipped.
+    const ids = projects.filter((p) => !p.noFetch).map((p) => p.universeId);
+    let wait = LIVE_MIN_MS;
+    let timer = 0;
+    const schedule = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(tick, wait);
+    };
+    const tick = async () => {
+      if (!document.hidden) {
+        const live = await fetchLiveGames(ids);
+        if (live) {
           setProjectsData((prev) =>
-            prev.map((x) =>
-              x.universeId === p.universeId ? { ...x, ...data } : x,
-            ),
+            prev.map((x) => (live[x.universeId] ? { ...x, ...live[x.universeId] } : x)),
           );
+        }
+        fetchGroupData(STUDIO.robloxGroupId).then((d) => {
+          if (d) setGroupMembers(d.memberCount);
         });
       }
-      fetchGroupData(STUDIO.robloxGroupId).then((d) => {
-        if (d) setGroupMembers(d.memberCount);
-      });
-    }, LIVE_POLL_MS);
-    return () => window.clearInterval(poll);
+      wait = Math.min(wait * 2, LIVE_MAX_MS);
+      schedule();
+    };
+    const wake = () => {
+      if (wait === LIVE_MIN_MS) return;
+      wait = LIVE_MIN_MS;
+      schedule();
+    };
+    const events = ["pointermove", "keydown", "scroll", "touchstart", "visibilitychange"];
+    events.forEach((e) => window.addEventListener(e, wake, { passive: true }));
+    schedule();
+    return () => {
+      window.clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, wake));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

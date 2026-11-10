@@ -174,7 +174,36 @@ function fetchAvatars(userIds: string[]): Promise<Record<string, string>> {
   );
 }
 
+interface LiveStats {
+  playing: number;
+  visits: number;
+  favorites: number;
+}
+
+/** One uncached multiget for every game's live counters; null on any failure. */
+function fetchLiveGames(
+  universeIds: string[],
+): Promise<Record<string, LiveStats> | null> {
+  return fetch(`https://games.${API_BASE_URL}/games?universeIds=${universeIds.join(",")}`)
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .then((data) =>
+      Object.fromEntries(
+        (data.data as { id: number; playing: number; visits: number; favoritedCount: number }[]).map(
+          (g) => [
+            String(g.id),
+            { playing: g.playing, visits: g.visits, favorites: g.favoritedCount },
+          ],
+        ),
+      ),
+    )
+    .catch(() => null);
+}
+
 export {
+  fetchLiveGames,
   fetchAvatars,
   fetchProjectThumbnails,
   fetchProjectData,
