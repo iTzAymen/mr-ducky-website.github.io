@@ -25,6 +25,24 @@ const THEME = [
   },
 ];
 
+const VerifiedBadge = () => (
+  <svg viewBox="0 0 24 24" className="h-[22px] w-[22px] flex-none" role="img">
+    <title>Verified on Roblox</title>
+    <g fill="#0066FF" stroke="#0B1D3F" strokeWidth="1">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" transform="rotate(45 12 12)" />
+    </g>
+    <path
+      d="M8 12.4l2.6 2.6L16 9.4"
+      fill="none"
+      stroke="#fff"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 function DevCard({
   dev,
   index,
@@ -71,9 +89,10 @@ function DevCard({
       />
       <div className="min-w-0 flex-1">
         <h3
-          className={`boldFont m-0 mb-1.5 text-[26px] tracking-[-.6px] ${theme.nameColor}`}
+          className={`boldFont m-0 mb-1.5 flex items-center gap-2 text-[26px] tracking-[-.6px] ${theme.nameColor}`}
         >
           {dev.name}
+          <VerifiedBadge />
         </h3>
         <p
           className={`m-0 mb-4 text-[15.5px] leading-[1.45] font-bold ${theme.roleColor}`}
