@@ -25,6 +25,8 @@ import { STUDIO } from "./config/studio";
 
 import type { ProjectData } from "./Types";
 
+const LIVE_POLL_MS = 60 * 1000;
+
 function App() {
   const [projectsData, setProjectsData] = useState<ProjectData[]>(
     projects.map((project) => ({
@@ -111,6 +113,26 @@ function App() {
     );
 
     Promise.allSettled(pending).then(() => setStatsLoading(false));
+
+    // Keep player counts / visits / group size live while the tab is open.
+    const poll = window.setInterval(() => {
+      if (document.hidden) return;
+      for (const p of projects) {
+        if (p.noFetch) continue;
+        fetchProjectData(p.universeId).then((data) => {
+          if (!data) return;
+          setProjectsData((prev) =>
+            prev.map((x) =>
+              x.universeId === p.universeId ? { ...x, ...data } : x,
+            ),
+          );
+        });
+      }
+      fetchGroupData(STUDIO.robloxGroupId).then((d) => {
+        if (d) setGroupMembers(d.memberCount);
+      });
+    }, LIVE_POLL_MS);
+    return () => window.clearInterval(poll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

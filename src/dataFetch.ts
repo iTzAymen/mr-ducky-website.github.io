@@ -7,15 +7,19 @@ const API_BASE_URL = `roproxy.com/v1/`;
  */
 const CACHE_PREFIX = "ducky-cache:";
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+const LIVE_TTL_MS = 30 * 1000; // player counts / visits: polled every minute
 
 type CacheEntry<T> = { at: number; data: T };
 
-function readCache<T>(key: string): { data: T; fresh: boolean } | null {
+function readCache<T>(
+  key: string,
+  ttl: number,
+): { data: T; fresh: boolean } | null {
   try {
     const raw = window.localStorage.getItem(CACHE_PREFIX + key);
     if (!raw) return null;
     const entry = JSON.parse(raw) as CacheEntry<T>;
-    return { data: entry.data, fresh: Date.now() - entry.at < CACHE_TTL_MS };
+    return { data: entry.data, fresh: Date.now() - entry.at < ttl };
   } catch {
     return null;
   }
@@ -39,8 +43,9 @@ async function cached<T>(
   key: string,
   fetcher: () => Promise<T>,
   fallback: T,
+  ttl = CACHE_TTL_MS,
 ): Promise<T> {
-  const hit = readCache<T>(key);
+  const hit = readCache<T>(key, ttl);
   if (hit?.fresh) return hit.data;
 
   try {
@@ -103,6 +108,7 @@ function fetchProjectData(
           };
         }),
     null,
+    LIVE_TTL_MS,
   );
 }
 
@@ -141,6 +147,7 @@ function fetchGroupData(
         })
         .then((data) => ({ memberCount: data.memberCount })),
     null,
+    LIVE_TTL_MS,
   );
 }
 
