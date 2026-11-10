@@ -144,7 +144,31 @@ function fetchGroupData(
   );
 }
 
+function fetchAvatars(userIds: string[]): Promise<Record<string, string>> {
+  const ids = userIds.join(",");
+  return cached<Record<string, string>>(
+    `avatars:${ids}`,
+    () =>
+      fetch(
+        `https://thumbnails.${API_BASE_URL}users/avatar-headshot?userIds=${ids}&size=150x150&format=Png&isCircular=false`,
+      )
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then((data) =>
+          Object.fromEntries(
+            (data.data as { targetId: number; imageUrl?: string }[])
+              .filter((d) => d.imageUrl)
+              .map((d) => [String(d.targetId), d.imageUrl as string]),
+          ),
+        ),
+    {},
+  );
+}
+
 export {
+  fetchAvatars,
   fetchProjectThumbnails,
   fetchProjectData,
   fetchProjectVotes,

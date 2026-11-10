@@ -1,7 +1,8 @@
-import type { CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { TiltCard } from "./TiltCard";
 import { useReveal } from "../hooks/useReveal";
 import devs from "../Data/devs.json";
+import { fetchAvatars } from "../dataFetch";
 
 import { ReactComponent as DiscordIcon } from "../assets/discord.svg";
 import { ReactComponent as YouTubeIcon } from "../assets/youtube.svg";
@@ -27,9 +28,11 @@ const THEME = [
 function DevCard({
   dev,
   index,
+  icon,
 }: {
   dev: (typeof devs)[number];
   index: number;
+  icon: string;
 }) {
   const { ref, style } = useReveal<HTMLDivElement>(index);
   const theme = THEME[index % THEME.length];
@@ -62,7 +65,7 @@ function DevCard({
       className={`relative flex items-start gap-5 rounded-[28px] border-4 border-[#0B1D3F] p-[22px] shadow-[0_8px_0_#0B1D3F] ${theme.bg}`}
     >
       <img
-        src={dev.icon}
+        src={icon}
         alt={dev.name}
         className={`h-[112px] w-[112px] flex-none rounded-[20px] border-4 border-[#0B1D3F] object-cover ${theme.avatarBg}`}
       />
@@ -112,6 +115,12 @@ function DevCard({
 
 export function Team({ gamesShipped }: { gamesShipped: number }) {
   const heading = useReveal<HTMLDivElement>(0);
+  const [avatars, setAvatars] = useState<Record<string, string>>({});
+
+  // Live headshots from Roblox; devs.json `icon` is the fallback.
+  useEffect(() => {
+    fetchAvatars(devs.map((d) => d.userId)).then(setAvatars);
+  }, []);
 
   return (
     <section id="team" className="px-6 pt-[72px] pb-5">
@@ -130,7 +139,12 @@ export function Team({ gamesShipped }: { gamesShipped: number }) {
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-[26px]">
           {devs.map((dev, i) => (
-            <DevCard key={dev.userId} dev={dev} index={i} />
+            <DevCard
+              key={dev.userId}
+              dev={dev}
+              index={i}
+              icon={avatars[dev.userId] ?? dev.icon}
+            />
           ))}
         </div>
       </div>
