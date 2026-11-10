@@ -100,7 +100,7 @@ export function NavBar({
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="flex h-9 w-9 flex-none items-center justify-center rounded-full border-2 border-[#0B1D3F] bg-white lg:hidden"
+          className="flex h-9 w-9 flex-none cursor-pointer items-center justify-center rounded-full border-2 border-[#0B1D3F] bg-white text-[#0B1D3F] shadow-[0_3px_0_#0B1D3F] transition-all duration-150 hover:translate-y-0.5 hover:bg-[#FFFF0D] hover:shadow-[0_1px_0_#0B1D3F] active:translate-y-1 active:shadow-[0_0_0_#0B1D3F] sm:h-10 sm:w-10 sm:border-[3px] sm:shadow-[0_4px_0_#0B1D3F] sm:hover:shadow-[0_2px_0_#0B1D3F] lg:hidden"
         >
           <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none">
             {menuOpen ? (
