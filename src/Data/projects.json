@@ -15,6 +15,19 @@
     "videos": ["https://www.youtube.com/watch?v=saM01WFicF8"]
   },
   {
+    "universeId": "10774020790",
+    "placeId": "96702555636724",
+    "name": "Moon Cleaners",
+    "description": "The Moon is covered in dust and you're the only one who can clean it! Sweep dust, sell your haul, upgrade your gear, and build robots and machines that clean the Moon for you.",
+    "created": "10/31/2026",
+    "visits": 1335,
+    "favorites": 47,
+    "badge": "NEW",
+    "thumbnails": [
+      "https://tr.rbxcdn.com/180DAY-e6c843dd4b93d49c8d72948df13a2441/768/432/Image/Png/noFilter"
+    ]
+  },
+  {
     "universeId": "2935861690",
     "placeId": "7554194743",
     "name": "The Squid Game",
