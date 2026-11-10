@@ -7,8 +7,6 @@
     "created": "3/23/2026",
     "visits": 2610,
     "favorites": 14,
-    "isNew": true,
-    "featured": true,
     "thumbnails": [
       "https://tr.rbxcdn.com/180DAY-eb29c01e082dc15be89de3c921baf406/768/432/Image/Webp/noFilter"
     ],
@@ -22,7 +20,8 @@
     "created": "10/31/2026",
     "visits": 1335,
     "favorites": 47,
-    "badge": "NEW",
+    "isNew": true,
+    "featured": true,
     "thumbnails": [
       "https://tr.rbxcdn.com/180DAY-e6c843dd4b93d49c8d72948df13a2441/768/432/Image/Png/noFilter"
     ]
