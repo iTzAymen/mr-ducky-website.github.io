@@ -13,20 +13,22 @@ function TickerContent({
   groupMembers: number;
   totalFavourites: number;
 }) {
-  const items = [
-    `${abbreviateNumber(totalVisits, true)} VISITS`,
-    `${abbreviateNumber(groupMembers, true)} GROUP MEMBERS`,
-    `${abbreviateNumber(STUDIO.discordMembers, true)} DISCORD MEMBERS`,
-    `${abbreviateNumber(totalFavourites, true)} FAVOURITES`,
-    `SHIPPING SINCE ${STUDIO.foundedYear}`,
-    `${abbreviateNumber(STUDIO.peakCcu, true)} PEAK CCU`,
+  const items: [string, number?][] = [
+    [`${abbreviateNumber(totalVisits, true)} VISITS`, totalVisits],
+    [`${abbreviateNumber(groupMembers, true)} GROUP MEMBERS`, groupMembers],
+    [`${abbreviateNumber(STUDIO.discordMembers, true)} DISCORD MEMBERS`],
+    [`${abbreviateNumber(totalFavourites, true)} FAVOURITES`, totalFavourites],
+    [`SHIPPING SINCE ${STUDIO.foundedYear}`],
+    [`${abbreviateNumber(STUDIO.peakCcu, true)} PEAK CCU`],
   ];
 
   return (
     <div className="flex items-center gap-[34px] pr-[34px] text-[19px] whitespace-nowrap text-[#FFFF0D]">
-      {items.map((item, i) => (
-        <Fragment key={item}>
-          <span className="boldFont">{item}</span>
+      {items.map(([text, exact], i) => (
+        <Fragment key={text}>
+          <span title={exact?.toLocaleString()} className="boldFont">
+            {text}
+          </span>
           <span style={{ color: SPARKLE_COLORS[i] }}>✦</span>
         </Fragment>
       ))}

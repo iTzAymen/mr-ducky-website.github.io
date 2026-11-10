@@ -66,7 +66,7 @@ export function Header({
         <div className="min-w-[260px] max-w-[560px] flex-1 basis-[440px] sm:min-w-[340px]">
           <div className="mb-5 inline-flex items-center gap-[9px] rounded-full border-[3px] border-[#0B1D3F] bg-[#0B1D3F]/90 py-[7px] pr-[15px] pl-3">
             <span className="h-[9px] w-[9px] rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
-            <span className="boldFont text-[13px] tracking-[.3px] text-white">
+            <span title={totalPlaying.toLocaleString()} className="boldFont text-[13px] tracking-[.3px] text-white">
               {statsLoading ? (
                 <span className="inline-block h-[13px] w-[46px] translate-y-[2px] animate-pulse rounded bg-white/40 align-middle" />
               ) : (

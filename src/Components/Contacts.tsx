@@ -117,7 +117,7 @@ export function Contacts({ groupMembers }: { groupMembers: number }) {
               <div className="boldFont mb-1 text-[26px] tracking-[-.6px]">
                 Roblox group
               </div>
-              <div className="defaultFont text-[15px] font-bold text-white/[92%]">
+              <div title={groupMembers.toLocaleString()} className="defaultFont text-[15px] font-bold text-white/[92%]">
                 {abbreviateNumber(groupMembers, true)} members · free items
               </div>
             </div>

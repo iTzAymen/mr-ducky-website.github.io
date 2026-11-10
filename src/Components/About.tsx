@@ -90,6 +90,7 @@ function StatCard({
         </span>
       </div>
       <div
+        title={value.toLocaleString()}
         className="boldFont text-[52px] leading-[1]"
         style={{ color: valueColor, textShadow }}
       >

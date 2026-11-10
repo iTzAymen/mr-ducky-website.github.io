@@ -29,13 +29,16 @@ function Stat({
   icon,
   children,
   className = "",
+  title,
 }: {
   icon: ReactNode;
   children: ReactNode;
   className?: string;
+  title?: string;
 }) {
   return (
     <span
+      title={title}
       className={`defaultFont inline-flex items-center gap-1 font-bold ${className}`}
     >
       <span className="text-[var(--ink)]/45">{icon}</span>
@@ -111,7 +114,7 @@ function GameCard({ project, index }: { project: ProjectData; index: number }) {
             COLLAB
           </span>
         ) : (
-          <span className="boldFont flex flex-none items-center gap-1.5 text-[13px] text-[var(--ink)]">
+          <span title={project.playing.toLocaleString()} className="boldFont flex flex-none items-center gap-1.5 text-[13px] text-[var(--ink)]">
             <span className="h-2 w-2 rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
             {abbreviateNumber(project.playing, true)}
           </span>
@@ -122,8 +125,8 @@ function GameCard({ project, index }: { project: ProjectData; index: number }) {
       </p>
       <div className="mt-auto mx-1 mb-1 flex items-center justify-between gap-2 border-t-[3px] border-dashed border-[var(--outline)]/15 pt-3">
         <span className="flex items-center gap-x-3 gap-y-1 text-[13px] text-[var(--ink)]/70">
-          <Stat icon={<VisitsIcon />}>{abbreviateNumber(project.visits)}</Stat>
-          <Stat icon={<FavIcon />}>{abbreviateNumber(project.favorites)}</Stat>
+          <Stat icon={<VisitsIcon />} title={project.visits.toLocaleString()}>{abbreviateNumber(project.visits)}</Stat>
+          <Stat icon={<FavIcon />} title={project.favorites.toLocaleString()}>{abbreviateNumber(project.favorites)}</Stat>
           <LikeBadge project={project} />
         </span>
         <span className="text-[13px] font-bold text-[var(--ink)]/45">
@@ -158,6 +161,7 @@ function ArchiveRow({ project }: { project: ProjectData }) {
       </span>
       <Stat
         className="flex-none text-[13.5px] text-[var(--ink)]/60"
+        title={project.visits.toLocaleString()}
         icon={<VisitsIcon />}
       >
         {abbreviateNumber(project.visits)}

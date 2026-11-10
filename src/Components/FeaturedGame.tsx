@@ -44,7 +44,7 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
           <span className="boldFont rounded-full border-[3px] border-[#0A66E0] bg-[#EAF6FF] dark:bg-[#0A66E0] dark:border-[#0B1D3F] dark:text-[#EAF6FF] px-3 py-1.5 text-xs tracking-[.7px] text-[#0A66E0]">
             FEATURED
           </span>
-          <span className="boldFont inline-flex items-center gap-[7px] text-[13px] text-[var(--ink)]">
+          <span title={project.playing.toLocaleString()} className="boldFont inline-flex items-center gap-[7px] text-[13px] text-[var(--ink)]">
             <span className="h-2 w-2 rounded-full bg-[#FF2D55] motion-safe:animate-[duckyPulse_2s_infinite]" />
             {abbreviateNumber(project.playing, true)} playing
           </span>
@@ -56,10 +56,10 @@ export function FeaturedGame({ project }: { project: ProjectData }) {
           {project.description}
         </p>
         <div className="mb-[22px] flex flex-wrap gap-2.5">
-          <span className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
+          <span title={project.visits.toLocaleString()} className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
             {abbreviateNumber(project.visits)} visits
           </span>
-          <span className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
+          <span title={project.favorites.toLocaleString()} className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
             {abbreviateNumber(project.favorites)} favourites
           </span>
           <span className="defaultFont rounded-[14px] border-[3px] border-[#0B1D3F] bg-[#EAF6FF] px-[13px] py-2 text-sm font-bold">
