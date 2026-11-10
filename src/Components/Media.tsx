@@ -14,11 +14,11 @@ const watchUrl = (video: Video) =>
     ? `https://www.youtube.com/shorts/${video.id}`
     : `https://www.youtube.com/watch?v=${video.id}`;
 
-// Shorts have a dedicated 1080x1920 vertical still (`oardefault`); regular
+// Shorts have a dedicated 1080x1920 vertical still (`oar2`); regular
 // uploads use the 16:9 `hqdefault`.
 const thumbUrl = (video: Video) =>
   `https://i.ytimg.com/vi/${video.id}/${
-    isShort(video) ? "oardefault" : "hqdefault"
+    isShort(video) ? "oar2" : "hqdefault"
   }.jpg`;
 
 /** Thumbnail that opens the video on YouTube in a new tab. */
